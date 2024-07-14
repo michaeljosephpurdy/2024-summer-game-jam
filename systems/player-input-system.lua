@@ -19,6 +19,11 @@ function PlayerInputSystem:process(e, dt)
   end
   -- apply friction, slowing down the player
   e.dx, e.dy = e.dx * e.friction, e.dy * e.friction
+
+  -- if the player is not in the truck, then do not show the player
+  if not e.is_truck then
+    e.hidden = not e.is_active
+  end
   -- if the player is not in the truck, then do not move the truck
   if not e.is_active then
     return
@@ -54,6 +59,8 @@ function PlayerInputSystem:process(e, dt)
       e.dx = 1 * math.cos(e.rotation)
       e.dy = 1 * math.sin(e.rotation)
     end
+  else
+    e.speed = e.speed * e.friction
   end
 end
 

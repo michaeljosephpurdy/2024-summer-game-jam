@@ -6,7 +6,7 @@ function CollisionRegistrationSystem:initialize(props)
 end
 
 function CollisionRegistrationSystem:onAdd(e)
-  local hitbox = e.hitbox --[[@as Hitbox]]
+  local hitbox = e.hitbox
   self.bump_world:add(e, e.x, e.y, hitbox.width, hitbox.height)
   e.bump_world = self.bump_world
 end

@@ -6,8 +6,14 @@ function CollisionDetectionSystem:initialize(props)
 end
 
 local function collision_filter(e1, e2)
-  if e1.is_player and e1.is_truck then
+  if e1.is_active or e2.is_active then
     return 'cross'
+  end
+  if e1.is_player and e2.is_truck then
+    return 'cross'
+  end
+  if e1.is_player and e2.is_solid then
+    return 'slide'
   end
 
   local player = e1 --[[@as Player]]
@@ -36,17 +42,12 @@ function CollisionDetectionSystem:process(e, dt)
   local future_y = e.y + (e.dy * e.speed * dt)
   e.x, e.y, cols, len = self.bump_world:move(e, future_x, future_y, collision_filter)
   for i = 1, len do
-    local col = cols[i]
-    local collided = true
-    if e.class ~= Player then
-      return
+    local e2 = cols[i]
+    if e.is_player and e.is_active and e2.is_truck then
+      e.can_drive = true
     end
-    -- any other entity below this will be player
-    if col.other.crossed then
-      return
-    end
-    if col.type == 'cross' then
-    elseif col.type == 'slide' then
+    if e2.type == 'cross' then
+    elseif e2.type == 'slide' then
     end
   end
 end

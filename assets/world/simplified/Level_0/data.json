@@ -1,15 +1,60 @@
 {
 	"identifier": "Level_0",
 	"uniqueIdentifer": "6b43f440-25d0-11ef-9316-835ad4ed59ca",
-	"x": 9,
-	"y": 8,
-	"width": 496,
-	"height": 416,
+	"x": 176,
+	"y": 64,
+	"width": 1580,
+	"height": 1040,
 	"bgColor": "#696A79",
 	"neighbourLevels": [],
 	"customFields" : {},
 	"layers": [
 		"Tiles.png"
 	],
-	"entities" : {}
+	"entities": {
+		"Entity": [
+			{
+				"id": "Entity",
+				"iid": "322cec50-25d0-11ef-9316-038cc8965e49",
+				"layer": "Entities",
+				"x": 1328,
+				"y": 800,
+				"width": 16,
+				"height": 16,
+				"color": 6776679,
+				"customFields": {
+					"type": "PLAYER_SPAWN",
+					"rotation": -3.142
+				}
+			},
+			{
+				"id": "Entity",
+				"iid": "38bd1c10-25d0-11ef-9316-85cfd5a51545",
+				"layer": "Entities",
+				"x": 1296,
+				"y": 720,
+				"width": 16,
+				"height": 16,
+				"color": 6776679,
+				"customFields": {
+					"type": "STATIONARY_TRUCK",
+					"rotation": 1.571
+				}
+			},
+			{
+				"id": "Entity",
+				"iid": "44e91b60-25d0-11ef-9316-75c9b08f30df",
+				"layer": "Entities",
+				"x": 1200,
+				"y": 720,
+				"width": 16,
+				"height": 16,
+				"color": 6776679,
+				"customFields": {
+					"type": "STATIONARY_TRUCK",
+					"rotation": -1.571
+				}
+			}
+		]
+	}
 }

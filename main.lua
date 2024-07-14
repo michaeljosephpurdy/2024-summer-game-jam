@@ -4,6 +4,7 @@ function love.load()
   class = require('plugins.middleclass')
   bump = require('plugins.bump')
   ldtk = require('plugins.super-simple-ldtk')
+  anim8 = require('plugins.anim8')
 
   GAME_WIDTH = 200
   GAME_HEIGHT = 200
@@ -20,6 +21,7 @@ function love.load()
     require('systems.player-input-system'),
     require('systems.entity-movement-system'),
     require('systems.collision-detection-system'),
+    require('systems.player-sync-system'),
     require('systems.camera-system'),
     require('systems.background-sprite-drawing-system'),
     require('systems.sprite-drawing-system'),
@@ -63,8 +65,6 @@ function love.load()
     end
     tiny_world:addSystem(system)
   end
-  tiny_world:addEntity(entity_factory:build('PLAYER'))
-  tiny_world:addEntity(entity_factory:build('PLAYER_TRUCK'))
   tiny_world:addEntity({
     is_event = true,
     load_tile_map = true,

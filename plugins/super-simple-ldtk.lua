@@ -58,7 +58,7 @@ function SuperSimpleLdtk:load(level_id, on_image, on_tile, on_entity)
     yy = data.y + data.height,
     width = data.width,
     height = data.height,
-    tile_size = 32,
+    tile_size = 16,
     id = data.uniqueIdentifer,
     level_id = level_id,
     neighbors = {},
@@ -107,11 +107,11 @@ function SuperSimpleLdtk:load(level_id, on_image, on_tile, on_entity)
     local x = 0
     for cell in rows:gmatch('[^,]+') do
       local tile = {
-        x = data.x + (x * 32),
-        y = data.y + (y * 32),
-        width = 32,
-        height = 32,
-        value = cell,
+        x = data.x + (x * 16),
+        y = data.y + (y * 16),
+        width = 16,
+        height = 16,
+        value = tonumber(cell),
         level_id = level_id,
       }
       if on_tile then

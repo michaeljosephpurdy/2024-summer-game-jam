@@ -21,9 +21,14 @@ function DebugOverlaySystem:process(e, dt)
   love.graphics.push()
   love.graphics.print('x: ' .. x, x, y - y_buffer)
   love.graphics.print('y: ' .. y, x, y - y_buffer + 8)
-  love.graphics.print('speed: ' .. e.speed, x, y - y_buffer + 16)
+  if e.speed then
+    love.graphics.print('speed: ' .. e.speed, x, y - y_buffer + 16)
+  end
   if e.hitbox then
     love.graphics.rectangle('line', e.x, e.y, e.hitbox.width, e.hitbox.height)
+  end
+  if e.collision_radius then
+    love.graphics.circle('line', e.x, e.y, e.collision_radius)
   end
   love.graphics.pop()
 end

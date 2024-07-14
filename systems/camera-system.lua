@@ -6,7 +6,8 @@ local function lerp(a, b, t)
   return a + (b - a) * t
 end
 
-function CameraSystem:initialize()
+function CameraSystem:initialize(props)
+  self.camera_settings = props.camera_settings
   self.push = require('plugins.push')
   local windowWidth, windowHeight = love.graphics.getDimensions()
   self.push:setupScreen(GAME_WIDTH, GAME_HEIGHT, windowWidth, windowHeight, {
@@ -20,10 +21,11 @@ function CameraSystem:initialize()
   self.offset_x = -GAME_WIDTH / 2
   self.offset_y = -GAME_HEIGHT / 2
   -- boundaries -- TODO: stop hardcoding
-  self.top_boundary = 0
-  self.bot_boundary = 1000
-  self.left_boundary = 0
-  self.right_boundary = 1000
+  self.left_boundary = 176
+  self.top_boundary = 64
+  self.right_boundary = self.left_boundary + 1580
+  self.bot_boundary = self.top_boundary + 1040
+  self.speed = 5
 end
 
 function CameraSystem:preWrap(dt)
@@ -60,7 +62,7 @@ function CameraSystem:process(e, dt)
     elseif e.x + camera_offset_x <= self.left_boundary + GAME_WIDTH / 2 then
       self.x = self.left_boundary
     end
-    self.x = lerp(self.old_x, self.x, 4 * dt)
+    self.x = lerp(self.old_x, self.x, self.speed * dt)
     -- build y
     self.y = self.y + camera_offset_y
     if e.y >= self.bot_boundary - GAME_HEIGHT / 2 then
@@ -68,7 +70,7 @@ function CameraSystem:process(e, dt)
     elseif e.y <= self.top_boundary + GAME_HEIGHT / 2 then
       self.y = self.top_boundary
     end
-    self.y = lerp(self.old_y, self.y, 25 * dt)
+    self.y = lerp(self.old_y, self.y, self.speed * dt)
     love.graphics.translate(-self.x, -self.y)
   end
   if e.screen_shake then
