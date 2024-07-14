@@ -22,7 +22,6 @@ function SpriteDrawingSystem:process(e, dt)
   if e.hidden then
     return
   end
-  local sprite = e.image or self.images[e.sprite]
   local x, y = e.x, e.y
   local offset = e.sprite_offset or default_offset
   local origin_offset = e.origin_offset or 0

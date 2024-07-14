@@ -1,30 +1,48 @@
-local PlayerInputSystem = tiny.processingSystem()
-PlayerInputSystem.filter = tiny.requireAny('is_player')
+local CharacterInputSystem = tiny.processingSystem()
+CharacterInputSystem.filter = tiny.requireAny('is_player')
 
-function PlayerInputSystem:initialize(props)
+function CharacterInputSystem:initialize(props)
   self.keyboard_state = props.keyboard_state --[[@as KeyboardState]]
 end
 
-function PlayerInputSystem:process(e, dt)
+function CharacterInputSystem:process(e, _)
   local perform_action = self.keyboard_state:is_key_just_released('space')
   local move_forward = self.keyboard_state:is_key_down('up')
   local move_backward = self.keyboard_state:is_key_down('down')
-  local is_moving = move_forward or move_backward
-  local can_turn = not e.is_truck or is_moving
-  local turn_left = can_turn and self.keyboard_state:is_key_down('left')
-  local turn_right = can_turn and self.keyboard_state:is_key_down('right')
+  local turn_left = self.keyboard_state:is_key_down('left')
+  local turn_right = self.keyboard_state:is_key_down('right')
 
   if perform_action then
-    e.is_active = not e.is_active
+    if e.is_driving then
+      print('get in vehicle')
+      e.vehicle.is_active = false
+      e.is_driving = false
+      e.pivot_point = nil
+    elseif e.nearest_vehicle then
+      print('get out of vehicle')
+      e.vehicle = e.nearest_vehicle
+      e.vehicle.is_active = true
+      e.is_driving = true
+      e.pivot_point = e.vehicle
+    elseif e.nearest_box then
+      print('pick up box')
+      e.box.pivot_point = e
+      e.is_carrying_box = true
+      e.box_is_active = false
+    elseif e.is_carrying_box then
+      print('put down box')
+      e.box.pivot_point = false
+      e.is_carrying_box = false
+      e.box.is_active = true
+    end
   end
   -- apply friction, slowing down the player
   e.dx, e.dy = e.dx * e.friction, e.dy * e.friction
 
-  -- if the player is not in the truck, then do not show the player
-  if not e.is_truck then
-    e.hidden = not e.is_active
-  end
-  -- if the player is not in the truck, then do not move the truck
+  -- player is not active if it is driving
+  e.is_active = not e.is_driving
+  -- if the player is active then hide it
+  e.hidden = e.is_driving
   if not e.is_active then
     return
   end
@@ -36,9 +54,8 @@ function PlayerInputSystem:process(e, dt)
   end
 
   -- you should walk slower if you are carrying a package
-  -- or if you are backing up in the truck
   local max_speed = e.max_speed
-  if e.is_carrying_box or (e.is_truck and move_backward) then
+  if e.is_carrying_box then
     max_speed = max_speed / 2
   end
   if move_forward then
@@ -64,4 +81,4 @@ function PlayerInputSystem:process(e, dt)
   end
 end
 
-return PlayerInputSystem
+return CharacterInputSystem

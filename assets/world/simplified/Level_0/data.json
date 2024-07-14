@@ -17,14 +17,14 @@
 				"id": "Entity",
 				"iid": "322cec50-25d0-11ef-9316-038cc8965e49",
 				"layer": "Entities",
-				"x": 1328,
-				"y": 800,
+				"x": 1488,
+				"y": 624,
 				"width": 16,
 				"height": 16,
 				"color": 6776679,
 				"customFields": {
 					"type": "PLAYER_SPAWN",
-					"rotation": -3.142
+					"rotation": 0
 				}
 			},
 			{
@@ -37,7 +37,7 @@
 				"height": 16,
 				"color": 6776679,
 				"customFields": {
-					"type": "STATIONARY_TRUCK",
+					"type": "AMAZON_TRUCK",
 					"rotation": 1.571
 				}
 			},
@@ -51,8 +51,22 @@
 				"height": 16,
 				"color": 6776679,
 				"customFields": {
-					"type": "STATIONARY_TRUCK",
-					"rotation": -1.571
+					"type": "AMAZON_TRUCK",
+					"rotation": 1.571
+				}
+			},
+			{
+				"id": "Entity",
+				"iid": "81507b30-25d0-11ef-9316-c3087aca76dd",
+				"layer": "Entities",
+				"x": 1344,
+				"y": 720,
+				"width": 16,
+				"height": 16,
+				"color": 6776679,
+				"customFields": {
+					"type": "AMAZON_TRUCK",
+					"rotation": 1.571
 				}
 			}
 		]

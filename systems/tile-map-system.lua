@@ -11,6 +11,7 @@ function TileMapSystem:initialize(props)
       x = image.x,
       y = image.y,
       sprite = image.image,
+      sprite_offset = { x = -8, y = -8 },
       draw_background = true,
     })
   end
@@ -19,9 +20,10 @@ function TileMapSystem:initialize(props)
       self.world:add({
         x = tile.x,
         y = tile.y,
-        hitbox = { width = tile.width, height = tile.height },
         is_solid = true,
+        collision_radius = tile.width / 2,
         draw_debug = true,
+        is_tile = true,
       })
     end
   end
@@ -30,11 +32,14 @@ function TileMapSystem:initialize(props)
     -- feels a little dirty sliding this in here but here it is
     if entity.is_player_spawn then
       local player = self.entity_factory:build('PLAYER')
-      local truck = self.entity_factory:build('PLAYER_TRUCK')
+      --local truck = self.entity_factory:build('AMAZON_TRUCK')
       player.x, player.y, player.rotation = entity.x, entity.y, entity.rotation
-      truck.x, truck.y, truck.rotation = entity.x, entity.y, entity.rotation
+      --truck.x, truck.y, truck.rotation = entity.x, entity.y, entity.rotation
+      --player.pivot_point = truck
+      --truck.is_active = true
+      player.is_active = true
       self.world:add(player)
-      self.world:add(truck)
+      --self.world:add(truck)
       return
     end
     self.world:add(entity)

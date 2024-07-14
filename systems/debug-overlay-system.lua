@@ -19,15 +19,21 @@ function DebugOverlaySystem:process(e, dt)
   local x, y = e.x, e.y
   local y_buffer = 48
   love.graphics.push()
-  love.graphics.print('x: ' .. x, x, y - y_buffer)
-  love.graphics.print('y: ' .. y, x, y - y_buffer + 8)
+  if not e.is_solid then
+    love.graphics.print('x: ' .. x, x, y - y_buffer)
+    love.graphics.print('y: ' .. y, x, y - y_buffer + 8)
+  end
   if e.speed then
     love.graphics.print('speed: ' .. e.speed, x, y - y_buffer + 16)
   end
-  if e.hitbox then
-    love.graphics.rectangle('line', e.x, e.y, e.hitbox.width, e.hitbox.height)
+  if e.width and e.height then
+    love.graphics.rectangle('line', e.x, e.y, e.width, e.height)
   end
   if e.collision_radius then
+    local fill_pattern = 'line'
+    if e.collided then
+      fill_pattern = 'fill'
+    end
     love.graphics.circle('line', e.x, e.y, e.collision_radius)
   end
   love.graphics.pop()

@@ -3,53 +3,58 @@ CollisionDetectionSystem.filter = tiny.requireAll('collision_detection_enabled',
 
 function CollisionDetectionSystem:initialize(props)
   self.bump_world = props.bump_world
-end
-
-local function collision_filter(e1, e2)
-  if e1.is_active or e2.is_active then
-    return 'cross'
-  end
-  if e1.is_player and e2.is_truck then
-    return 'cross'
-  end
-  if e1.is_player and e2.is_solid then
-    return 'slide'
-  end
-
-  local player = e1 --[[@as Player]]
-
-  --if e2.class == SolidPlatform then
-  --return 'slide'
-  --end
-
-  --if e2.class == SideCheckingGate then
-  --local other = e2 --[[@as SideCheckingGate]]
-  --if other.crossed then
-  --return 'cross'
-  --end
-  --if other.sides == player.sides then
-  --return 'cross'
-  --else
-  --return 'slide'
-  --end
-  --end
-  return 'cross'
+  self.collision_grid = props.collision_grid --[[@as CollisionGrid]]
 end
 
 function CollisionDetectionSystem:process(e, dt)
-  local cols, len
+  if not e.is_active then
+    return
+  end
   local future_x = e.x + (e.dx * e.speed * dt)
   local future_y = e.y + (e.dy * e.speed * dt)
-  e.x, e.y, cols, len = self.bump_world:move(e, future_x, future_y, collision_filter)
-  for i = 1, len do
-    local e2 = cols[i]
-    if e.is_player and e.is_active and e2.is_truck then
-      e.can_drive = true
-    end
-    if e2.type == 'cross' then
-    elseif e2.type == 'slide' then
+  -- first, we'll check horizontal collisions
+  local horizontal_collisions = self.collision_grid:single_query(future_x, e.y)
+  local solid_on_horizontal = false
+  for _, other in pairs(horizontal_collisions) do
+    if other.is_tile and other.is_solid then
+      solid_on_horizontal = true
+      break
     end
   end
+  -- second, we'll check vertical collisions
+  local vertical_collisions = self.collision_grid:single_query(e.x, future_y)
+  local solid_on_vertical = false
+  for _, other in pairs(vertical_collisions) do
+    if other.is_tile and other.is_solid then
+      solid_on_vertical = true
+      break
+    end
+  end
+  -- third, we'll check all surrounding collisions
+  local collisions = self.collision_grid:query(future_x, future_y)
+  for _, other in pairs(collisions) do
+    local debug_rect = self.collision_grid:get_rect(other)
+    debug_rect.draw_debug = true
+    debug_rect.time_to_live = 0
+    self.world:addEntity(debug_rect)
+    local max_distance = e.collision_radius + other.collision_radius
+    local distance_squared = ((other.x - future_x) * (other.x - future_x))
+      + ((other.y - future_y) * (other.y - future_y))
+    if distance_squared <= max_distance * max_distance then
+      if e.is_player and other.is_vehicle then
+        e.nearest_vehicle = other
+      end
+    end
+  end
+  if solid_on_horizontal then
+    future_x = e.x
+  end
+  if solid_on_vertical then
+    future_y = e.y
+  end
+  -- if there are no collisions, update the entity
+  self.collision_grid:update(e, future_x, future_y)
+  e.x, e.y = future_x, future_y
 end
 
 return CollisionDetectionSystem

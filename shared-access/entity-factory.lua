@@ -3,15 +3,20 @@ local EntityFactory = class('EntityFactory') --[[@as EntityFactory]]
 ---@enum EntityTypes
 local EntityTypes = {
   PLAYER = 'PLAYER',
+  AMAZON_TRUCK = 'AMAZON_TRUCK',
   PLAYER_TRUCK = 'PLAYER_TRUCK',
   PLAYER_SPAWN = 'PLAYER_SPAWN',
   STATIONARY_TRUCK = 'STATIONARY_TRUCK',
+  INVISIBLE_COLLIDER = 'INVISIBLE_COLLIDER',
 }
 EntityFactory.types = EntityTypes
 
 ---@private
----@type { [EntityTypes]: table }
+---@type { [Entity]: table }
 EntityFactory.entities = {
+  [EntityTypes.INVISIBLE_COLLIDER] = {
+    collision_radius = 8,
+  },
   [EntityTypes.PLAYER] = {
     is_player = true,
     camera_follow = true,
@@ -27,21 +32,15 @@ EntityFactory.entities = {
     speed = 0,
     max_speed = 50,
     rotation_speed = 0.1,
-    hitbox = { width = 16, height = 16 },
     draw_debug = true,
     collision_detection_enabled = true,
     collision_radius = 8,
+    revolve_around = true,
   },
-  [EntityTypes.STATIONARY_TRUCK] = {
-    sprite = 'assets/player-truck.png',
-    rotation = 0,
-    hitbox = { width = 24, height = 52 },
-    origin_offset = 32,
-  },
-  [EntityTypes.PLAYER_TRUCK] = {
-    is_player = true,
+  [EntityTypes.AMAZON_TRUCK] = {
+    is_vehicle = true,
     is_truck = true,
-    is_active = true,
+    is_active = false,
     camera_follow = true,
     x = 150,
     y = 50,
@@ -55,7 +54,6 @@ EntityFactory.entities = {
     speed = 0,
     max_speed = 100,
     rotation_speed = 0.025,
-    hitbox = { width = 24, height = 52 },
     draw_debug = true,
     collision_detection_enabled = true,
     collision_radius = 16,
@@ -67,14 +65,19 @@ EntityFactory.entities = {
   },
 }
 
----@param type EntityTypes | string
+---@param e EntityTypes | string
 ---@return table
 function EntityFactory:build(e)
   if type(e) == 'string' then
+    if not self.entities[e] then
+      print('NO ENTITY FOUND FOR TYPE: ' .. e)
+      return {}
+    end
     local new_entity = {}
     for k, v in pairs(self.entities[e]) do
       new_entity[k] = v
     end
+    new_entity.type = e
     return new_entity
   end
 
@@ -89,6 +92,7 @@ function EntityFactory:build(e)
   for k, v in pairs(e) do
     new_entity[k] = v
   end
+  new_entity.type = e.type
   return new_entity
 end
 

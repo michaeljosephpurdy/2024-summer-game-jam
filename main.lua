@@ -2,9 +2,7 @@ function love.load()
   json = require('plugins.json')
   tiny = require('plugins.tiny-ecs')
   class = require('plugins.middleclass')
-  bump = require('plugins.bump')
   ldtk = require('plugins.super-simple-ldtk')
-  anim8 = require('plugins.anim8')
 
   GAME_WIDTH = 200
   GAME_HEIGHT = 200
@@ -18,10 +16,11 @@ function love.load()
     require('systems.collision-registration-system'),
     require('systems.keyboard-state-system'),
     require('systems.tile-map-system'),
-    require('systems.player-input-system'),
+    require('systems.vehicle-input-system'),
+    require('systems.character-input-system'),
     require('systems.entity-movement-system'),
     require('systems.collision-detection-system'),
-    require('systems.player-sync-system'),
+    require('systems.revolve-around-system'),
     require('systems.camera-system'),
     require('systems.background-sprite-drawing-system'),
     require('systems.sprite-drawing-system'),
@@ -48,19 +47,19 @@ function love.load()
   local joystick_state = require('shared-access.joystick')() --[[@as JoystickState]]
   local keyboard_state = require('shared-access.keyboard')() --[[@as KeyboardState]]
   local entity_factory = require('shared-access.entity-factory')() --[[@as EntityFactory]]
+  local collision_grid = require('shared-access.collision-grid')(16, 1000, 1000) --[[@as CollisionGrid]]
 
   love.graphics.setLineStyle('rough')
   love.window.setMode(GAME_WIDTH * GAME_SCALE, GAME_HEIGHT * GAME_SCALE)
-  bump_world = bump.newWorld(64)
   tiny_world = tiny.world()
 
   for _, system in ipairs(SYSTEMS_IN_ORDER) do
     if system.initialize then
       system:initialize({
-        bump_world = bump_world,
         joystick_state = joystick_state,
         keyboard_state = keyboard_state,
         entity_factory = entity_factory,
+        collision_grid = collision_grid,
       })
     end
     tiny_world:addSystem(system)

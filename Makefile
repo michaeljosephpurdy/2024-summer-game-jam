@@ -4,6 +4,7 @@ all:
 images:
 	aseprite -b --layer "normal" --frame-tag "idle" assets/player.aseprite --save-as assets/player.png
 	aseprite -b --layer "carrying" --frame-tag "idle" assets/player.aseprite --save-as assets/player-carrying.png
+	aseprite -b assets/box.aseprite --save-as assets/box.png
 	aseprite -b assets/player-truck.aseprite --save-as assets/player-truck.png
 
 serve:
