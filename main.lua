@@ -17,6 +17,7 @@ function love.load()
     require('systems.keyboard-state-system'),
     require('systems.tile-map-system'),
     require('systems.vehicle-input-system'),
+    require('systems.character-interaction-system'),
     require('systems.character-input-system'),
     require('systems.entity-movement-system'),
     require('systems.collision-detection-system'),

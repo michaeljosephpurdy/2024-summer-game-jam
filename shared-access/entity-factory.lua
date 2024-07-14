@@ -8,6 +8,7 @@ local EntityTypes = {
   PLAYER_SPAWN = 'PLAYER_SPAWN',
   STATIONARY_TRUCK = 'STATIONARY_TRUCK',
   INVISIBLE_COLLIDER = 'INVISIBLE_COLLIDER',
+  BOX = 'BOX',
 }
 EntityFactory.types = EntityTypes
 
@@ -16,6 +17,15 @@ EntityFactory.types = EntityTypes
 EntityFactory.entities = {
   [EntityTypes.INVISIBLE_COLLIDER] = {
     collision_radius = 8,
+  },
+  [EntityTypes.BOX] = {
+    sprite = 'assets/box.png',
+    origin_offset = 16,
+    rotation = 0,
+    collision_radius = 8,
+    is_box = true,
+    revolve_around = true,
+    pivot_offset = 0,
   },
   [EntityTypes.PLAYER] = {
     is_player = true,
@@ -36,6 +46,7 @@ EntityFactory.entities = {
     collision_detection_enabled = true,
     collision_radius = 8,
     revolve_around = true,
+    pivot_offset = math.rad(-90),
   },
   [EntityTypes.AMAZON_TRUCK] = {
     is_vehicle = true,

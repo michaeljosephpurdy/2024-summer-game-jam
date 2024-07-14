@@ -68,6 +68,20 @@
 					"type": "AMAZON_TRUCK",
 					"rotation": 1.571
 				}
+			},
+			{
+				"id": "Entity",
+				"iid": "63a4b6e0-25d0-11ef-9316-f95be966c543",
+				"layer": "Entities",
+				"x": 1488,
+				"y": 688,
+				"width": 16,
+				"height": 16,
+				"color": 6776679,
+				"customFields": {
+					"type": "BOX",
+					"rotation": 0
+				}
 			}
 		]
 	}

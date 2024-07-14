@@ -11,10 +11,11 @@ function RevolveAroundSystem:process(e)
   if not e.pivot_point then
     return
   end
-  local x = e.pivot_point.x + (math.cos(e.pivot_point.rotation - 1.5707963267949) * 25)
-  local y = e.pivot_point.y + (math.sin(e.pivot_point.rotation - 1.5707963267949) * 25)
+  local x = e.pivot_point.x + (math.cos(e.pivot_point.rotation + e.pivot_offset) * e.origin_offset)
+  local y = e.pivot_point.y + (math.sin(e.pivot_point.rotation + e.pivot_offset) * e.origin_offset)
   self.collision_grid:update(e, x, y)
   e.x, e.y = x, y
+  e.y = y
 end
 
 return RevolveAroundSystem

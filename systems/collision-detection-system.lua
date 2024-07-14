@@ -1,5 +1,5 @@
 local CollisionDetectionSystem = tiny.processingSystem()
-CollisionDetectionSystem.filter = tiny.requireAll('collision_detection_enabled', 'x', 'y')
+CollisionDetectionSystem.filter = tiny.requireAll('collision_detection_enabled', 'collision_radius', 'x', 'y')
 
 function CollisionDetectionSystem:initialize(props)
   self.bump_world = props.bump_world
@@ -43,6 +43,8 @@ function CollisionDetectionSystem:process(e, dt)
     if distance_squared <= max_distance * max_distance then
       if e.is_player and other.is_vehicle then
         e.nearest_vehicle = other
+      elseif e.is_player and other.is_box then
+        e.nearest_box = other
       end
     end
   end
