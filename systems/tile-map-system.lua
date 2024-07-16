@@ -29,33 +29,10 @@ function TileMapSystem:initialize(props)
   end
 
   self.on_entity = function(e)
-    local entity = self.entity_factory:build(e)
-    -- feels a little dirty sliding this in here but here it is
-    if entity.is_player_spawn then
-      local player = self.entity_factory:build('PLAYER')
-      player.x, player.y, player.rotation = entity.x, entity.y, entity.rotation
-      player.is_active = true
-      self.world:add(player)
-      return
-    end
-    -- if it's a vehicle, we need to add the door
-    if entity.is_vehicle then
-      local door = self.entity_factory:build('VEHICLE_DOOR')
-      door.x, door.y, door.rotation = entity.x, entity.y, entity.rotation
-      door.pivot_point = entity
-      entity.door = door
-      door.vehicle = entity
+    local entities = self.entity_factory:build(e)
+    for _, entity in pairs(entities) do
       self.world:add(entity)
-      self.world:add(door)
-      -- add door
-      return
     end
-
-    -- if it's a truck, we need to add a back door to get/store boxes
-    if entity.is_truck then
-    end
-
-    self.world:add(entity)
   end
 end
 

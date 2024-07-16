@@ -22,6 +22,8 @@ function love.load()
     require('systems.sprite-animating-system'),
     require('systems.entity-movement-system'),
     require('systems.collision-detection-system'),
+    require('systems.repel-system'),
+    require('systems.friction-system'),
     require('systems.revolve-around-system'),
     require('systems.camera-system'),
     --drawing

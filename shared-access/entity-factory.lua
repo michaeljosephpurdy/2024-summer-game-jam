@@ -4,6 +4,7 @@ local EntityFactory = class('EntityFactory') --[[@as EntityFactory]]
 local EntityTypes = {
   PLAYER = 'PLAYER',
   AMAZON_TRUCK = 'AMAZON_TRUCK',
+  TRUCK_COLLIDER = 'TRUCK_COLLIDER',
   PLAYER_TRUCK = 'PLAYER_TRUCK',
   PLAYER_SPAWN = 'PLAYER_SPAWN',
   STATIONARY_TRUCK = 'STATIONARY_TRUCK',
@@ -21,6 +22,8 @@ EntityFactory.types = EntityTypes
 EntityFactory.entities = {
   [EntityTypes.INVISIBLE_COLLIDER] = {
     collision_radius = 8,
+    repel_force = 0,
+    can_be_repelled = false,
   },
   [EntityTypes.STOP_SIGN] = {
     x = 0,
@@ -31,6 +34,7 @@ EntityFactory.entities = {
     rotation = 0,
     draw_debug = true,
     lower_draw = true,
+    repel_force = 15,
   },
   [EntityTypes.VEHICLE_DOOR] = {
     rotation = 0,
@@ -59,6 +63,11 @@ EntityFactory.entities = {
     revolve_around = true,
     pivot_offset = 0,
     lower_draw = true,
+    debug_draw = true,
+    repel_force = 0,
+    can_be_repelled = true,
+    --
+    repel_offset = -1,
   },
   [EntityTypes.PLAYER] = {
     is_player = true,
@@ -110,6 +119,8 @@ EntityFactory.entities = {
     collision_radius = 8,
     revolve_around = true,
     pivot_offset = math.rad(-90),
+    can_be_repelled = true,
+    repel_force = 3,
   },
   [EntityTypes.AMAZON_TRUCK] = {
     is_vehicle = true,
@@ -132,6 +143,8 @@ EntityFactory.entities = {
     collision_detection_enabled = true,
     collision_radius = 16,
     upper_draw = true,
+    repel_force = 30,
+    --can_be_repelled = true,
   },
   [EntityTypes.PLAYER_SPAWN] = {
     x = 0,
@@ -143,19 +156,36 @@ EntityFactory.entities = {
 ---@param e EntityTypes
 ---@return table
 function EntityFactory:build(e)
-  if type(e) == 'string' then
-    if not self.entities[e] then
-      print('NO ENTITY FOUND FOR TYPE: ' .. e)
-      return {}
-    end
-    local new_entity = {}
-    for k, v in pairs(self.entities[e]) do
-      new_entity[k] = v
-    end
-    new_entity.type = e
-    return new_entity
+  local entity = self:build_single(e)
+  if entity.is_player_spawn then
+    local player = self:build_single({
+      x = entity.x,
+      y = entity.y,
+      rotation = entity.rotation,
+      is_active = true,
+      type = 'PLAYER',
+    })
+    return { player }
   end
+  -- if it's a vehicle, we need to add the door
+  if entity.is_vehicle then
+    local door = self:build_single({
+      x = entity.x,
+      y = entity.y,
+      rotation = entity.rotation,
+      type = 'VEHICLE_DOOR',
+    })
+    door.pivot_point = entity
+    entity.door = door
+    door.vehicle = entity
+    door.colliders = {} -- add colliders for truck
+    return { entity, door }
+  end
+  return { entity }
+end
 
+---@return table
+function EntityFactory:build_single(e)
   if not self.entities[e.type] then
     print('NO ENTITY FOUND FOR TYPE: ' .. e.type)
     return {}
@@ -168,6 +198,7 @@ function EntityFactory:build(e)
     new_entity[k] = v
   end
   new_entity.type = e.type
+  new_entity.draw_debug = true
   return new_entity
 end
 

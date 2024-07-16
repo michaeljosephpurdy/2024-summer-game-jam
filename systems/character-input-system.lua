@@ -11,17 +11,19 @@ function CharacterInputSystem:process(e, dt)
   local turn_left = self.keyboard_state:is_key_down('left')
   local turn_right = self.keyboard_state:is_key_down('right')
 
-  -- apply friction, slowing down the player
-  e.dx, e.dy = e.dx * e.friction, e.dy * e.friction
-
   if not e.is_active then
     return
   end
 
+  local rotation_direction = 1
+  if move_backward then
+    rotation_direction = -1
+  end
+
   if turn_left then
-    e.rotation = e.rotation - (e.rotation_speed * dt)
+    e.rotation = e.rotation - (e.rotation_speed * dt) * rotation_direction
   elseif turn_right then
-    e.rotation = e.rotation + (e.rotation_speed * dt)
+    e.rotation = e.rotation + (e.rotation_speed * dt) * rotation_direction
   end
 
   -- you should walk slower if you are carrying a package

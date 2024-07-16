@@ -7,6 +7,8 @@ end
 
 function CollisionRegistrationSystem:onAdd(e)
   self.collision_grid:register(e)
+  e.repel_force_dx = 0
+  e.repel_force_dy = 0
 end
 
 function CollisionRegistrationSystem:onRemove(e)
