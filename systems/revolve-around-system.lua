@@ -15,7 +15,6 @@ function RevolveAroundSystem:process(e)
   local y = e.pivot_point.y + (math.sin(e.pivot_point.rotation + e.pivot_offset) * e.origin_offset)
   self.collision_grid:update(e, x, y)
   e.x, e.y = x, y
-  e.y = y
 end
 
 return RevolveAroundSystem

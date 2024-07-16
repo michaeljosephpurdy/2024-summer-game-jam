@@ -7,6 +7,8 @@ function CollisionDetectionSystem:initialize(props)
 end
 
 function CollisionDetectionSystem:process(e, dt)
+  e.nearest_vehicle = nil
+  e.nearest_box = nil
   if not e.is_active then
     return
   end
@@ -41,8 +43,8 @@ function CollisionDetectionSystem:process(e, dt)
     local distance_squared = ((other.x - future_x) * (other.x - future_x))
       + ((other.y - future_y) * (other.y - future_y))
     if distance_squared <= max_distance * max_distance then
-      if e.is_player and other.is_vehicle then
-        e.nearest_vehicle = other
+      if e.is_player and other.is_vehicle_door then
+        e.nearest_vehicle = other.vehicle
       elseif e.is_player and other.is_box then
         e.nearest_box = other
       end
