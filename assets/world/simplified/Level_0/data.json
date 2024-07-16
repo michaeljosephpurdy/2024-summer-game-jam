@@ -17,7 +17,7 @@
 				"id": "Entity",
 				"iid": "322cec50-25d0-11ef-9316-038cc8965e49",
 				"layer": "Entities",
-				"x": 1488,
+				"x": 1504,
 				"y": 624,
 				"width": 16,
 				"height": 16,
@@ -73,13 +73,27 @@
 				"id": "Entity",
 				"iid": "63a4b6e0-25d0-11ef-9316-f95be966c543",
 				"layer": "Entities",
-				"x": 1488,
-				"y": 688,
+				"x": 1456,
+				"y": 800,
 				"width": 16,
 				"height": 16,
 				"color": 6776679,
 				"customFields": {
 					"type": "BOX",
+					"rotation": 0
+				}
+			},
+			{
+				"id": "Entity",
+				"iid": "20788e00-25d0-11ef-9316-915ec7b2122a",
+				"layer": "Entities",
+				"x": 1040,
+				"y": 848,
+				"width": 16,
+				"height": 16,
+				"color": 6776679,
+				"customFields": {
+					"type": "STOP_SIGN",
 					"rotation": 0
 				}
 			}

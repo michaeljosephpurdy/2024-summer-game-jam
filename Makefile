@@ -2,10 +2,15 @@ all:
 	love ./
 
 images:
-	aseprite -b --layer "normal" --frame-tag "idle" assets/player.aseprite --save-as assets/player.png
-	aseprite -b --layer "carrying" --frame-tag "idle" assets/player.aseprite --save-as assets/player-carrying.png
+	# not carrying
+	aseprite -b --layer "feet" --layer "legs" --layer "arms-normal"   --layer "head" --frame-tag "idle" assets/player.aseprite --save-as assets/player-idle.png
+	aseprite -b --layer "feet" --layer "legs" --layer "arms-normal"   --layer "head" --frame-tag "walking" assets/player.aseprite --save-as assets/player-walking-1.png
+	# carrying
+	aseprite -b --layer "feet" --layer "legs" --layer "arms-carrying" --layer "head" --frame-tag "idle" assets/player.aseprite --save-as assets/player-carrying-idle.png
+	aseprite -b --layer "feet" --layer "legs" --layer "arms-carrying" --layer "head" --frame-tag "walking" assets/player.aseprite --save-as assets/player-carrying-walking-1.png
 	aseprite -b assets/box.aseprite --save-as assets/box.png
 	aseprite -b assets/player-truck.aseprite --save-as assets/player-truck.png
+	aseprite -b assets/stop-sign.aseprite --save-as assets/stop-sign.png
 
 serve:
 	rm -rf makelove-build
