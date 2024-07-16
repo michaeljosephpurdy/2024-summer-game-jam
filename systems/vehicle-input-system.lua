@@ -5,7 +5,7 @@ function VehicleInputSystem:initialize(props)
   self.keyboard_state = props.keyboard_state --[[@as KeyboardState]]
 end
 
-function VehicleInputSystem:process(e, _)
+function VehicleInputSystem:process(e, dt)
   if not e.is_active then
     return
   end
@@ -24,9 +24,9 @@ function VehicleInputSystem:process(e, _)
     rotation_direction = -1
   end
   if turn_left then
-    e.rotation = e.rotation - (e.rotation_speed * rotation_direction)
+    e.rotation = e.rotation - (e.rotation_speed * rotation_direction) * dt
   elseif turn_right then
-    e.rotation = e.rotation + (e.rotation_speed * rotation_direction)
+    e.rotation = e.rotation + (e.rotation_speed * rotation_direction) * dt
   end
 
   -- vehicles go backwards 2x slower than forward

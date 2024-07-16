@@ -5,7 +5,7 @@ function CharacterInputSystem:initialize(props)
   self.keyboard_state = props.keyboard_state --[[@as KeyboardState]]
 end
 
-function CharacterInputSystem:process(e, _)
+function CharacterInputSystem:process(e, dt)
   local move_forward = self.keyboard_state:is_key_down('up')
   local move_backward = self.keyboard_state:is_key_down('down')
   local turn_left = self.keyboard_state:is_key_down('left')
@@ -19,9 +19,9 @@ function CharacterInputSystem:process(e, _)
   end
 
   if turn_left then
-    e.rotation = e.rotation - e.rotation_speed
+    e.rotation = e.rotation - (e.rotation_speed * dt)
   elseif turn_right then
-    e.rotation = e.rotation + e.rotation_speed
+    e.rotation = e.rotation + (e.rotation_speed * dt)
   end
 
   -- you should walk slower if you are carrying a package
