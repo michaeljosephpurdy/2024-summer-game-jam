@@ -1,10 +1,10 @@
-local BackgroundDrawingSystem = tiny.processingSystem()
-local rejection_filter = tiny.rejectAny('draw_foreground')
-BackgroundDrawingSystem.filter = tiny.requireAll(rejection_filter, 'draw_background', 'sprite', 'x', 'y')
-BackgroundDrawingSystem.is_draw_system = true
+local SpriteDrawingSystem = tiny.processingSystem()
+local rejection_filter = tiny.rejectAny('draw_foreground', 'draw_background')
+SpriteDrawingSystem.filter = tiny.requireAll(rejection_filter, 'upper_draw', 'sprite', 'x', 'y')
+SpriteDrawingSystem.is_draw_system = true
 local default_offset = { x = 0, y = 0 }
 
-function BackgroundDrawingSystem:process(e, dt)
+function SpriteDrawingSystem:process(e, dt)
   if e.hidden then
     return
   end
@@ -16,4 +16,4 @@ function BackgroundDrawingSystem:process(e, dt)
   love.graphics.draw(e.sprite, x + offset.x, y + offset.y, rotation, scale, scale, origin_offset, origin_offset)
 end
 
-return BackgroundDrawingSystem
+return SpriteDrawingSystem
