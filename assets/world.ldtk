@@ -282,10 +282,10 @@
 		}
 	], "enums": [{ "identifier": "EntityTypes", "uid": 8, "values": [
 		{ "id": "PLAYER_SPAWN", "tileRect": null, "color": 0 },
-		{ "id": "STATIONARY_TRUCK", "tileRect": null, "color": 2434341 },
 		{ "id": "AMAZON_TRUCK", "tileRect": null, "color": 6776679 },
 		{ "id": "BOX", "tileRect": null, "color": 16777215 },
-		{ "id": "STOP_SIGN", "tileRect": null, "color": 9568256 }
+		{ "id": "STOP_SIGN", "tileRect": null, "color": 9568256 },
+		{ "id": "DELIVERY_STOP", "tileRect": null, "color": 65535 }
 	], "iconTilesetUid": null, "externalRelPath": null, "externalFileChecksum": null, "tags": [] }], "externalEnums": [], "levelFields": [] },
 	"levels": [
 		{
@@ -464,6 +464,72 @@
 							],
 							"__worldX": 1584,
 							"__worldY": 960
+						},
+						{
+							"__identifier": "Entity",
+							"__grid": [65,42],
+							"__pivot": [0,0],
+							"__tags": [],
+							"__tile": null,
+							"__smartColor": "#676767",
+							"iid": "6dbd3960-25d0-11ef-9316-998b4ebd0dad",
+							"width": 16,
+							"height": 16,
+							"defUid": 6,
+							"px": [1040,672],
+							"fieldInstances": [
+								{ "__identifier": "type", "__type": "LocalEnum.EntityTypes", "__value": "DELIVERY_STOP", "__tile": null, "defUid": 9, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["DELIVERY_STOP"]
+								}] },
+								{ "__identifier": "rotation", "__type": "Float", "__value": 0, "__tile": null, "defUid": 10, "realEditorValues": [] }
+							],
+							"__worldX": 1120,
+							"__worldY": 752
+						},
+						{
+							"__identifier": "Entity",
+							"__grid": [60,39],
+							"__pivot": [0,0],
+							"__tags": [],
+							"__tile": null,
+							"__smartColor": "#676767",
+							"iid": "d83f7c00-25d0-11ef-9316-4bd5f995fff1",
+							"width": 16,
+							"height": 16,
+							"defUid": 6,
+							"px": [960,624],
+							"fieldInstances": [
+								{ "__identifier": "type", "__type": "LocalEnum.EntityTypes", "__value": "DELIVERY_STOP", "__tile": null, "defUid": 9, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["DELIVERY_STOP"]
+								}] },
+								{ "__identifier": "rotation", "__type": "Float", "__value": 0, "__tile": null, "defUid": 10, "realEditorValues": [] }
+							],
+							"__worldX": 1040,
+							"__worldY": 704
+						},
+						{
+							"__identifier": "Entity",
+							"__grid": [68,30],
+							"__pivot": [0,0],
+							"__tags": [],
+							"__tile": null,
+							"__smartColor": "#676767",
+							"iid": "d934ff90-25d0-11ef-9316-17ec3ea9d09b",
+							"width": 16,
+							"height": 16,
+							"defUid": 6,
+							"px": [1088,480],
+							"fieldInstances": [
+								{ "__identifier": "type", "__type": "LocalEnum.EntityTypes", "__value": "DELIVERY_STOP", "__tile": null, "defUid": 9, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["DELIVERY_STOP"]
+								}] },
+								{ "__identifier": "rotation", "__type": "Float", "__value": 0, "__tile": null, "defUid": 10, "realEditorValues": [] }
+							],
+							"__worldX": 1168,
+							"__worldY": 560
 						}
 					]
 				},

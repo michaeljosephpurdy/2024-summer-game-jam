@@ -1,5 +1,5 @@
 local RevolveAroundSystem = tiny.processingSystem()
-RevolveAroundSystem.filter = tiny.requireAll('revolve_around')
+RevolveAroundSystem.filter = tiny.requireAny('revolve_around')
 
 function RevolveAroundSystem:initialize(props)
   self.collision_grid = props.collision_grid --[[@as CollisionGrid]]

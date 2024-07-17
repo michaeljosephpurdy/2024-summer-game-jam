@@ -8,11 +8,11 @@ function RepelSystem:initialize(props)
 end
 
 function RepelSystem:onAdd(e)
-  print(e.type .. ' in repel system')
+  e.repel_force_dx = 0
+  e.repel_force_dy = 0
 end
 
 function RepelSystem:process(e, dt)
-  print('repel ' .. e.type .. ' by ' .. e.repel_force_dx .. ',' .. e.repel_force_dy)
   if e.repel_force_dy > self.max_repel_force then
     e.repel_force_dy = self.max_repel_force
   elseif e.repel_force_dy < -self.max_repel_force then

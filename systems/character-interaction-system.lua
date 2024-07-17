@@ -3,6 +3,7 @@ CharacterInteractionSystem.filter = tiny.requireAll('is_player')
 
 function CharacterInteractionSystem:initialize(props)
   self.keyboard_state = props.keyboard_state --[[@as KeyboardState]]
+  self.game_state = props.game_state --[[@as GameState]]
 end
 
 function CharacterInteractionSystem:process(e, _)
@@ -32,13 +33,14 @@ function CharacterInteractionSystem:process(e, _)
       e.is_carrying_box = false
       e.box.pivot_point = false
       e.box = nil
-    elseif e.nearest_box then
+    elseif e.nearest_box and not e.nearest_box.is_delivered then
       print('pick up box')
       e.is_carrying_box = true
       e.box = e.nearest_box
       e.box.is_active = false
       e.box.hidden = true
       e.box.pivot_point = e
+      self.game_state:mark_box_as_current(e.box)
     end
   end
 

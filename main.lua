@@ -22,6 +22,8 @@ function love.load()
     require('systems.sprite-animating-system'),
     require('systems.entity-movement-system'),
     require('systems.collision-detection-system'),
+    require('systems.delivery-detection-system'),
+    require('systems.box-delivery-linking-system'),
     require('systems.repel-system'),
     require('systems.friction-system'),
     require('systems.revolve-around-system'),
@@ -36,6 +38,7 @@ function love.load()
     require('systems.debug-overlay-system'),
     require('systems.entity-cleanup-system'),
     require('systems.time-to-live-system'),
+    require('systems.delayed-function-execution-system'),
   }
 
   PALETTE = {
@@ -56,6 +59,7 @@ function love.load()
   local keyboard_state = require('shared-access.keyboard')() --[[@as KeyboardState]]
   local entity_factory = require('shared-access.entity-factory')() --[[@as EntityFactory]]
   local collision_grid = require('shared-access.collision-grid')(16, 1000, 1000) --[[@as CollisionGrid]]
+  local game_state = require('shared-access.game-state')() --[[@as GameState]]
 
   love.graphics.setLineStyle('rough')
   love.window.setMode(GAME_WIDTH * GAME_SCALE, GAME_HEIGHT * GAME_SCALE)
@@ -68,6 +72,7 @@ function love.load()
         keyboard_state = keyboard_state,
         entity_factory = entity_factory,
         collision_grid = collision_grid,
+        game_state = game_state,
       })
     end
     tiny_world:addSystem(system)

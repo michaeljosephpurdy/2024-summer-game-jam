@@ -5,14 +5,14 @@ local EntityTypes = {
   PLAYER = 'PLAYER',
   AMAZON_TRUCK = 'AMAZON_TRUCK',
   TRUCK_COLLIDER = 'TRUCK_COLLIDER',
-  PLAYER_TRUCK = 'PLAYER_TRUCK',
   PLAYER_SPAWN = 'PLAYER_SPAWN',
-  STATIONARY_TRUCK = 'STATIONARY_TRUCK',
   INVISIBLE_COLLIDER = 'INVISIBLE_COLLIDER',
   VEHICLE_DOOR = 'VEHICLE_DOOR',
   TRUCK_BACK_DOOR = 'TRUCK_BACK_DOOR',
   BOX = 'BOX',
+  BOX_TRIGGER = 'BOX_TRIGGER',
   STOP_SIGN = 'STOP_SIGN',
+  DELIVERY_STOP = 'DELIVERY_STOP',
   --TRASH_CAN = 'TRASH_CAN',
 }
 EntityFactory.types = EntityTypes
@@ -22,7 +22,6 @@ EntityFactory.types = EntityTypes
 EntityFactory.entities = {
   [EntityTypes.INVISIBLE_COLLIDER] = {
     collision_radius = 8,
-    repel_force = 0,
     can_be_repelled = false,
   },
   [EntityTypes.STOP_SIGN] = {
@@ -34,12 +33,14 @@ EntityFactory.entities = {
     rotation = 0,
     draw_debug = true,
     lower_draw = true,
+    can_repel = true,
     repel_force = 15,
   },
   [EntityTypes.VEHICLE_DOOR] = {
     rotation = 0,
     collision_radius = 8,
     is_vehicle_door = true,
+    is_trigger = true,
     revolve_around = true,
     pivot_offset = math.rad(-90),
     origin_offset = 16,
@@ -58,16 +59,24 @@ EntityFactory.entities = {
     sprite = love.graphics.newImage('assets/box.png'),
     origin_offset = 8,
     rotation = 0,
-    collision_radius = 8,
+    collision_radius = 5,
     is_box = true,
     revolve_around = true,
     pivot_offset = 0,
     lower_draw = true,
     debug_draw = true,
-    repel_force = 0,
     can_be_repelled = true,
-    --
-    repel_offset = -1,
+    repel_offset = 2,
+  },
+  [EntityTypes.BOX_TRIGGER] = {
+    rotation = 0,
+    collision_radius = 8,
+    origin_offset = 0,
+    draw_debug = true,
+    revolve_around = true,
+    pivot_offset = 0,
+    is_trigger = true,
+    can_be_repelled = false,
   },
   [EntityTypes.PLAYER] = {
     is_player = true,
@@ -120,6 +129,7 @@ EntityFactory.entities = {
     revolve_around = true,
     pivot_offset = math.rad(-90),
     can_be_repelled = true,
+    can_repel = true,
     repel_force = 3,
   },
   [EntityTypes.AMAZON_TRUCK] = {
@@ -144,7 +154,15 @@ EntityFactory.entities = {
     collision_radius = 16,
     upper_draw = true,
     repel_force = 30,
-    --can_be_repelled = true,
+    can_repel = true,
+  },
+  [EntityTypes.DELIVERY_STOP] = {
+    collision_radius = 0,
+    is_delivery_stop = true,
+    sprite = love.graphics.newImage('assets/delivery-stop.png'),
+    origin_offset = 32,
+    rotation_speed = 2,
+    lower_draw = true,
   },
   [EntityTypes.PLAYER_SPAWN] = {
     x = 0,
@@ -167,6 +185,19 @@ function EntityFactory:build(e)
     })
     return { player }
   end
+  -- if it's a box, we need to make an additional collider outside of the box
+  -- to make sure player doesn't just push box around the whole time,
+  -- and can actually pick it up
+  if entity.is_box then
+    local collider = self:build_single({
+      x = entity.x,
+      y = entity.y,
+      type = 'BOX_TRIGGER',
+      pivot_point = entity,
+      trigger = entity,
+    })
+    return { entity, collider }
+  end
   -- if it's a vehicle, we need to add the door
   if entity.is_vehicle then
     local door = self:build_single({
@@ -174,11 +205,35 @@ function EntityFactory:build(e)
       y = entity.y,
       rotation = entity.rotation,
       type = 'VEHICLE_DOOR',
+      trigger = entity,
     })
     door.pivot_point = entity
     entity.door = door
     door.vehicle = entity
     door.colliders = {} -- add colliders for truck
+    if entity.type ~= 'AMAZON_TRUCK' then
+      local front_collider = self:build_single({
+        rotation = 0,
+        collision_radius = 16,
+        revolve_around = true,
+        pivot_offset = math.rad(-90),
+        origin_offset = 16,
+        draw_debug = true,
+        type = 'INVISIBLE_COLLIDER',
+        pivot_point = entity,
+      })
+      local rear_collider = self:build_single({
+        rotation = 0,
+        collision_radius = 16,
+        revolve_around = true,
+        pivot_offset = math.rad(-90),
+        origin_offset = 16,
+        draw_debug = true,
+        type = 'INVISIBLE_COLLIDER',
+        pivot_point = entity,
+      })
+      return { entity, door, front_collider, rear_collider }
+    end
     return { entity, door }
   end
   return { entity }

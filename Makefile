@@ -9,6 +9,7 @@ images:
 	aseprite -b --layer "feet" --layer "legs" --layer "arms-carrying" --layer "head" --frame-tag "idle" assets/player.aseprite --save-as assets/player-carrying-idle.png
 	aseprite -b --layer "feet" --layer "legs" --layer "arms-carrying" --layer "head" --frame-tag "walking" assets/player.aseprite --save-as assets/player-carrying-walking-1.png
 	aseprite -b assets/box.aseprite --save-as assets/box.png
+	aseprite -b assets/delivery-stop.aseprite --save-as assets/delivery-stop.png
 	aseprite -b assets/player-truck.aseprite --save-as assets/player-truck.png
 	aseprite -b assets/stop-sign.aseprite --save-as assets/stop-sign.png
 

@@ -68,9 +68,6 @@ end
 function CollisionGrid:query(x, y)
   local entities = {}
   local grid_x, grid_y = self:to_grid(x, y)
-  print('querying')
-  print(grid_x)
-  print(grid_y)
   -- Uh... is all this looping going to be okay?
   for _, ent in pairs(self.grid[grid_y - 1][grid_x - 1]) do
     table.insert(entities, ent)

@@ -42,20 +42,20 @@ function CollisionDetectionSystem:process(e, dt)
     local overlaps = distance_squared <= max_distance * max_distance
 
     if overlaps then
-      local other_push_player = true
+      local other_push_player = other.can_repel
       local player_push_other = other.can_be_repelled
-      local power_from_other = other.repel_force or 2
-      local power_from_player = e.repel_force or 4
+      local power_from_other = other.repel_force
+      local power_from_player = e.repel_force
       if e == other then
         other_push_player = false
         player_push_other = false
       elseif other.is_solid then
         other_push_player = false
         player_push_other = false
-      elseif e.is_player and other.is_vehicle_door then
-        e.nearest_vehicle = other.vehicle
-      elseif e.is_player and other.is_box then
-        e.nearest_box = other
+      elseif e.is_player and other.is_trigger and other.is_vehicle_door then
+        e.nearest_vehicle = other.trigger
+      elseif e.is_player and other.is_trigger and other.trigger.is_box then
+        e.nearest_box = other.trigger
       end
       if other_push_player or player_push_other then
         local angle = math.atan2(other.y - e.y, other.x - e.x)
