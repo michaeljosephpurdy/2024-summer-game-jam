@@ -13,6 +13,7 @@ local EntityTypes = {
   BOX_TRIGGER = 'BOX_TRIGGER',
   STOP_SIGN = 'STOP_SIGN',
   DELIVERY_STOP = 'DELIVERY_STOP',
+  INDICATOR = 'INDICATOR',
   --TRASH_CAN = 'TRASH_CAN',
 }
 EntityFactory.types = EntityTypes
@@ -23,6 +24,11 @@ EntityFactory.entities = {
   [EntityTypes.INVISIBLE_COLLIDER] = {
     collision_radius = 8,
     can_be_repelled = false,
+  },
+  [EntityTypes.INDICATOR] = {
+    sprite = love.graphics.newImage('assets/indicator.png'),
+    draw_ui = true,
+    rotation = 0,
   },
   [EntityTypes.STOP_SIGN] = {
     x = 0,
@@ -157,6 +163,8 @@ EntityFactory.entities = {
     can_repel = true,
   },
   [EntityTypes.DELIVERY_STOP] = {
+    xx = 0,
+    yy = 0,
     collision_radius = 0,
     is_delivery_stop = true,
     sprite = love.graphics.newImage('assets/delivery-stop.png'),

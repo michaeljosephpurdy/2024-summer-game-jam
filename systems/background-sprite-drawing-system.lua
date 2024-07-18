@@ -1,6 +1,5 @@
 local BackgroundDrawingSystem = tiny.processingSystem()
-local rejection_filter = tiny.rejectAny('draw_foreground')
-BackgroundDrawingSystem.filter = tiny.requireAll(rejection_filter, 'draw_background', 'sprite', 'x', 'y')
+BackgroundDrawingSystem.filter = tiny.requireAll('draw_background', 'sprite', 'x', 'y')
 BackgroundDrawingSystem.is_draw_system = true
 local default_offset = { x = 0, y = 0 }
 

@@ -7,7 +7,7 @@ local function lerp(a, b, t)
 end
 
 function CameraSystem:initialize(props)
-  self.camera_settings = props.camera_settings
+  self.camera_state = props.camera_state --[[@as CameraState]]
   self.push = require('plugins.push')
   local windowWidth, windowHeight = love.graphics.getDimensions()
   self.push:setupScreen(GAME_WIDTH, GAME_HEIGHT, windowWidth, windowHeight, {
@@ -72,6 +72,12 @@ function CameraSystem:process(e, dt)
     end
     self.y = lerp(self.old_y, self.y, self.speed * dt)
     love.graphics.translate(-self.x, -self.y)
+    self.camera_state:set_screen_rect(
+      self.x + self.offset_x,
+      self.y + self.offset_y,
+      self.x + GAME_WIDTH,
+      self.y + GAME_HEIGHT
+    )
   end
   if e.screen_shake then
     local shake = love.math.newTransform()

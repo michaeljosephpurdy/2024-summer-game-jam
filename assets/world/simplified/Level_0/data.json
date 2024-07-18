@@ -9,7 +9,8 @@
 	"neighbourLevels": [],
 	"customFields" : {},
 	"layers": [
-		"Tiles.png"
+		"Background.png",
+		"Foreground.png"
 	],
 	"entities": {
 		"Entity": [
@@ -87,8 +88,8 @@
 				"id": "Entity",
 				"iid": "20788e00-25d0-11ef-9316-915ec7b2122a",
 				"layer": "Entities",
-				"x": 1504,
-				"y": 880,
+				"x": 1296,
+				"y": 864,
 				"width": 16,
 				"height": 16,
 				"color": 6776679,
@@ -101,8 +102,8 @@
 				"id": "Entity",
 				"iid": "6dbd3960-25d0-11ef-9316-998b4ebd0dad",
 				"layer": "Entities",
-				"x": 1040,
-				"y": 672,
+				"x": 1552,
+				"y": 960,
 				"width": 16,
 				"height": 16,
 				"color": 6776679,
@@ -115,8 +116,8 @@
 				"id": "Entity",
 				"iid": "d83f7c00-25d0-11ef-9316-4bd5f995fff1",
 				"layer": "Entities",
-				"x": 960,
-				"y": 624,
+				"x": 1536,
+				"y": 928,
 				"width": 16,
 				"height": 16,
 				"color": 6776679,
@@ -129,8 +130,8 @@
 				"id": "Entity",
 				"iid": "d934ff90-25d0-11ef-9316-17ec3ea9d09b",
 				"layer": "Entities",
-				"x": 1088,
-				"y": 480,
+				"x": 1040,
+				"y": 656,
 				"width": 16,
 				"height": 16,
 				"color": 6776679,

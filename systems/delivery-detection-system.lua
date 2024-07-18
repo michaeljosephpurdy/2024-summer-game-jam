@@ -14,6 +14,7 @@ function DeliveryDetectionSystem:process(e, dt)
   e.hidden = not e.current
   e.rotation = e.rotation + e.rotation_speed * dt
   e.scale = math.sin(e.rotation) / 8 + 1
+  e.xx, e.yy = e.x + 1, e.y + 1
   local overlapping_entities = self.collision_grid:query(e.x, e.y)
   for _, entity in pairs(overlapping_entities) do
     if entity.is_box and entity.is_active == true and entity.linked == e and not entity.is_delivered then

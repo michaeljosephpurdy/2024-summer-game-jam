@@ -7,13 +7,19 @@ function TileMapSystem:initialize(props)
   self.ldtk:load_all()
   self.entity_factory = props.entity_factory --[[@as EntityFactory]]
   self.on_image = function(image)
-    self.world:add({
+    local image_data = {
       x = image.x,
       y = image.y,
       sprite = love.graphics.newImage(image.image),
       sprite_offset = { x = -8, y = -8 },
-      draw_background = true,
-    })
+    }
+    if image.layer == 'Background.png' then
+      image_data.draw_background = true
+    end
+    if image.layer == 'Foreground.png' then
+      image_data.draw_foreground = true
+    end
+    self.world:add(image_data)
   end
   self.on_tile = function(tile)
     if tile.value == 1 then

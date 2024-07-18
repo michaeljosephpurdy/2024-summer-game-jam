@@ -17,7 +17,7 @@ local function find_random(tbl, filter)
       table.insert(found, item)
     end
   end
-  return found[math.floor(math.random(length))]
+  return found[math.floor((math.random() * length)) + 1]
 end
 
 function GameState:find_delivery_stop(box)
@@ -64,6 +64,9 @@ function GameState:mark_box_as_current(current_box)
     box.current = current
     if box.linked then
       box.linked.current = current
+      if current then
+        self.current_destination = box.linked
+      end
     end
   end
 end
@@ -77,6 +80,8 @@ function GameState:set_delivered(delivered)
   self.delivered = delivered
 end
 
-function GameState:get_current_destination() end
+function GameState:get_current_destination()
+  return self.current_destination
+end
 
 return GameState

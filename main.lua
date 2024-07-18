@@ -1,4 +1,6 @@
 function love.load()
+  math.randomseed(os.time())
+
   json = require('plugins.json')
   tiny = require('plugins.tiny-ecs')
   class = require('plugins.middleclass')
@@ -23,6 +25,7 @@ function love.load()
     require('systems.entity-movement-system'),
     require('systems.collision-detection-system'),
     require('systems.delivery-detection-system'),
+    require('systems.delivery-indicator-system'),
     require('systems.box-delivery-linking-system'),
     require('systems.repel-system'),
     require('systems.friction-system'),
@@ -60,6 +63,7 @@ function love.load()
   local entity_factory = require('shared-access.entity-factory')() --[[@as EntityFactory]]
   local collision_grid = require('shared-access.collision-grid')(16, 1000, 1000) --[[@as CollisionGrid]]
   local game_state = require('shared-access.game-state')() --[[@as GameState]]
+  local camera_state = require('shared-access.camera-state')() --[[@as CameraState]]
 
   love.graphics.setLineStyle('rough')
   love.window.setMode(GAME_WIDTH * GAME_SCALE, GAME_HEIGHT * GAME_SCALE)
@@ -73,6 +77,7 @@ function love.load()
         entity_factory = entity_factory,
         collision_grid = collision_grid,
         game_state = game_state,
+        camera_state = camera_state,
       })
     end
     tiny_world:addSystem(system)

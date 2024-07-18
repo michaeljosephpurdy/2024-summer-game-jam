@@ -12,6 +12,7 @@ images:
 	aseprite -b assets/delivery-stop.aseprite --save-as assets/delivery-stop.png
 	aseprite -b assets/player-truck.aseprite --save-as assets/player-truck.png
 	aseprite -b assets/stop-sign.aseprite --save-as assets/stop-sign.png
+	aseprite -b assets/indicator.aseprite --save-as assets/indicator.png
 
 serve:
 	rm -rf makelove-build
