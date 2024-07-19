@@ -3,9 +3,13 @@ CharacterInputSystem.filter = tiny.requireAny('is_player')
 
 function CharacterInputSystem:initialize(props)
   self.keyboard_state = props.keyboard_state --[[@as KeyboardState]]
+  self.game_state = props.game_state --[[@as GameState]]
 end
 
 function CharacterInputSystem:process(e, dt)
+  if self.game_state:are_controls_locked() then
+    return
+  end
   local move_forward = self.keyboard_state:is_key_down('up')
   local move_backward = self.keyboard_state:is_key_down('down')
   local turn_left = self.keyboard_state:is_key_down('left')

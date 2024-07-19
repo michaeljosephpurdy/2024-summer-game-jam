@@ -12,6 +12,7 @@ function love.load()
   GRAVITY = 25
   MAX_GRAVITY = 800
   JUMP_HEIGHT = 400
+  NEW_LINE = string.char(10)
 
   SYSTEMS_IN_ORDER = {
     require('systems.audio-system'),
@@ -37,6 +38,8 @@ function love.load()
     require('systems.middle-sprite-drawing-system'),
     require('systems.upper-sprite-drawing-system'),
     require('systems.foreground-sprite-drawing-system'),
+    require('systems.game-state-drawing-system'),
+    require('systems.dialogue-system'),
     -- cleanup
     require('systems.debug-overlay-system'),
     require('systems.entity-cleanup-system'),
@@ -85,6 +88,19 @@ function love.load()
   tiny_world:addEntity({
     is_event = true,
     load_tile_map = true,
+  })
+  -- stylua: ignore
+  tiny_world:addEntity({
+    is_dialogue = true,
+    messages = {
+      'Dispatch: Ugh, I got the newbie?',
+      'Dispatch: This is how it\'s gonna'..NEW_LINE..
+      'go. You need to deliver these'..NEW_LINE..
+      'packages.',
+      'Dispatch: The more you deliver,'..NEW_LINE..
+      'the more money you get.'..NEW_LINE..
+      'Simple.'
+    },
   })
 end
 

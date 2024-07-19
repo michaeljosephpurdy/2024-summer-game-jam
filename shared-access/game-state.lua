@@ -6,6 +6,7 @@ function GameState:initialize()
   self.current_destination = nil
   self.boxes = {}
   self.stops = {}
+  self.controls_locked = false
 end
 
 local function find_random(tbl, filter)
@@ -82,6 +83,14 @@ end
 
 function GameState:get_current_destination()
   return self.current_destination
+end
+
+function GameState:toggle_controls()
+  self.controls_locked = not self.controls_locked
+end
+
+function GameState:are_controls_locked()
+  return self.controls_locked
 end
 
 return GameState

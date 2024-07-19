@@ -3,9 +3,13 @@ VehicleInputSystem.filter = tiny.requireAny('is_vehicle')
 
 function VehicleInputSystem:initialize(props)
   self.keyboard_state = props.keyboard_state --[[@as KeyboardState]]
+  self.game_state = props.game_state --[[@as GameState]]
 end
 
 function VehicleInputSystem:process(e, dt)
+  if self.game_state:are_controls_locked() then
+    return
+  end
   if not e.is_active then
     return
   end

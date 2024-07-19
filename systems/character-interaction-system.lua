@@ -7,6 +7,9 @@ function CharacterInteractionSystem:initialize(props)
 end
 
 function CharacterInteractionSystem:process(e, _)
+  if self.game_state:are_controls_locked() then
+    return
+  end
   local move_foward = self.keyboard_state:is_key_down('up')
   local move_backward = self.keyboard_state:is_key_down('down')
   local moving = move_foward or move_backward
