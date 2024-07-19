@@ -2,6 +2,7 @@
 local GameState = class('GameState') ---[[@as GameState]]
 
 function GameState:initialize()
+  self.game_started = false
   self.max_days = 5
   self.days = 4
   self.money = 0

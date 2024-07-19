@@ -16,6 +16,9 @@ function GameStateSystem:initialize(props)
 end
 
 function GameStateSystem:update(dt)
+  if not self.game_state.game_started then
+    return
+  end
   if not self.game_state:are_controls_locked() then
     self.game_state:progress_time(dt)
     if self.game_state:is_game_over() and not self.is_done then

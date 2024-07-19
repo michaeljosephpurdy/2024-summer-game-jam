@@ -10,7 +10,7 @@ love_files = [
 ]
 
 [lovejs]
-title = "Purdy Summer 2024"
+title = "A Prime Summer 2024"
 memory = "200000000"  # starting memory of the webpage (default is 20 MB)
 
 [macos]
@@ -18,7 +18,7 @@ memory = "200000000"  # starting memory of the webpage (default is 20 MB)
 #icon_file = "macIcon.png"  # or macIcon.icns
 
 [macos.app_metadata]
-CFBundleName = "Purdy Summer 2024"
+CFBundleName = "A Prime Summer 2024"
 CFBundleIdentifier = "dev.mikepurdy.2024summergamejam"
 NSHumanReadableCopyright = "Copyright © 2024 Mike Purdy"
 CFBundleShortVersionString = "0.0.1"

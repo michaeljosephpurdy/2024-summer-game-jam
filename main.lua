@@ -122,6 +122,9 @@ function love.load()
   first_message.on_complete = function()
     tiny_world:addEntity(second_message)
   end
+  third_message.on_complete = function()
+    game_state.game_started = true
+  end
   tiny_world:addEntity(first_message)
 end
 
