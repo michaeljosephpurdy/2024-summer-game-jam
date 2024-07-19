@@ -31,6 +31,7 @@ function CharacterInteractionSystem:process(e, _)
       e.pivot_point = e.vehicle
     elseif e.is_carrying_box then
       print('put down box')
+      e.box.protected = false
       e.box.hidden = false
       e.box.is_active = true
       e.is_carrying_box = false
@@ -43,6 +44,7 @@ function CharacterInteractionSystem:process(e, _)
       e.box.is_active = false
       e.box.hidden = true
       e.box.pivot_point = e
+      e.box.protected = true
       self.game_state:mark_box_as_current(e.box)
     end
   end

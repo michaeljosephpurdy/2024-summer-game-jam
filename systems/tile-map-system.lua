@@ -2,6 +2,7 @@ local TileMapSystem = tiny.processingSystem()
 TileMapSystem.filter = tiny.requireAll('is_event', 'load_tile_map')
 
 function TileMapSystem:initialize(props)
+  self.game_state = props.game_state --[[@as GameState]]
   self.ldtk = require('plugins.super-simple-ldtk')
   self.ldtk:init('world')
   self.ldtk:load_all()
@@ -37,6 +38,9 @@ function TileMapSystem:initialize(props)
   self.on_entity = function(e)
     local entities = self.entity_factory:build(e)
     for _, entity in pairs(entities) do
+      if entity.is_stop_sign then
+        self.game_state.stop_sign_count = self.game_state.stop_sign_count + 1
+      end
       self.world:add(entity)
     end
   end

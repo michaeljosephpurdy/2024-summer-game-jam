@@ -5,6 +5,7 @@ function GameState:initialize()
   self.max_days = 5
   self.money = 0
   self.delivered = 0
+
   self.delivery_direction = ''
   self.accidents = 0
   self.last_accident = 0
@@ -12,6 +13,7 @@ function GameState:initialize()
   self.boxes = {}
   self.stops = {}
   self.controls_locked = false
+  self.stop_sign_count = 0
 
   self.seconds = 0
   self.minutes = 0

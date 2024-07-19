@@ -16,6 +16,7 @@ function love.load()
 
   SYSTEMS_IN_ORDER = {
     require('systems.audio-system'),
+    require('systems.accident-system'),
     require('systems.collision-registration-system'),
     require('systems.keyboard-state-system'),
     require('systems.tile-map-system'),

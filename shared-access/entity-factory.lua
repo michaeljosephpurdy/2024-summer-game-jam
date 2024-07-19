@@ -10,8 +10,10 @@ local EntityTypes = {
   VEHICLE_DOOR = 'VEHICLE_DOOR',
   TRUCK_BACK_DOOR = 'TRUCK_BACK_DOOR',
   BOX = 'BOX',
+  CRUSHED_BOX = 'CRUSHED_BOX',
   BOX_TRIGGER = 'BOX_TRIGGER',
   STOP_SIGN = 'STOP_SIGN',
+  CRUSHED_STOP_SIGN = 'CRUSHED_STOP_SIGN',
   DELIVERY_STOP = 'DELIVERY_STOP',
   INDICATOR = 'INDICATOR',
   --TRASH_CAN = 'TRASH_CAN',
@@ -41,6 +43,7 @@ EntityFactory.entities = {
     lower_draw = true,
     can_repel = true,
     repel_force = 15,
+    is_stop_sign = true,
   },
   [EntityTypes.VEHICLE_DOOR] = {
     rotation = 0,
@@ -60,6 +63,16 @@ EntityFactory.entities = {
     pivot_offset = math.rad(-180),
     origin_offset = 0,
     draw_debug = true,
+  },
+  [EntityTypes.CRUSHED_BOX] = {
+    sprite = love.graphics.newImage('assets/box-crushed.png'),
+    origin_offset = 8,
+    lower_draw = true,
+  },
+  [EntityTypes.CRUSHED_STOP_SIGN] = {
+    sprite = love.graphics.newImage('assets/stop-sign-crushed.png'),
+    origin_offset = 16,
+    lower_draw = true,
   },
   [EntityTypes.BOX] = {
     sprite = love.graphics.newImage('assets/box.png'),

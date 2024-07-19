@@ -4,6 +4,7 @@ CollisionDetectionSystem.filter = tiny.requireAll('collision_detection_enabled',
 function CollisionDetectionSystem:initialize(props)
   self.bump_world = props.bump_world
   self.collision_grid = props.collision_grid --[[@as CollisionGrid]]
+  self.entity_factory = props.entity_factory --[[@as EntityFactory]]
 end
 
 function CollisionDetectionSystem:process(e, dt)
@@ -56,6 +57,10 @@ function CollisionDetectionSystem:process(e, dt)
         e.nearest_vehicle = other.trigger
       elseif e.is_player and other.is_trigger and other.trigger.is_box then
         e.nearest_box = other.trigger
+      elseif e.is_truck and e.is_active and other.is_box and not other.protected then
+        self.world:addEntity({ accident_type = 'BOX', entity = other })
+      elseif e.is_truck and other.is_stop_sign then
+        self.world:addEntity({ accident_type = 'STOP_SIGN', entity = other })
       end
       if other_push_player or player_push_other then
         local angle = math.atan2(other.y - e.y, other.x - e.x)
