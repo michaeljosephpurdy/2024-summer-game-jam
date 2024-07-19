@@ -38,7 +38,7 @@ function love.load()
     require('systems.middle-sprite-drawing-system'),
     require('systems.upper-sprite-drawing-system'),
     require('systems.foreground-sprite-drawing-system'),
-    require('systems.game-state-drawing-system'),
+    require('systems.game-state-system'),
     require('systems.dialogue-system'),
     -- cleanup
     require('systems.debug-overlay-system'),
@@ -101,6 +101,8 @@ function love.load()
       'the more money you get.'..NEW_LINE..
       'Simple.'
     },
+    on_complete = function()
+    end,
   })
 end
 

@@ -39,6 +39,7 @@ function VehicleInputSystem:process(e, dt)
     max_speed = max_speed / 2
   end
   if move_forward then
+    self.game_state:calculate_direction(e.x, e.y)
     e.speed = e.speed + e.acceleration
     if e.speed > e.max_speed then
       e.speed = e.max_speed
@@ -48,6 +49,7 @@ function VehicleInputSystem:process(e, dt)
       e.dy = 1 * math.sin(e.rotation)
     end
   elseif move_backward then
+    self.game_state:calculate_direction(e.x, e.y)
     e.speed = e.speed - e.acceleration
     if e.speed < -e.max_speed then
       e.speed = -e.max_speed

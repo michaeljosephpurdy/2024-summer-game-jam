@@ -74,6 +74,9 @@ function DialogueSystem:onRemove(e)
   if not e.time then
     self.game_state:toggle_controls()
   end
+  if e.on_complete then
+    e:on_complete()
+  end
 end
 
 return DialogueSystem

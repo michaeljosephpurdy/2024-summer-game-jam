@@ -502,7 +502,7 @@
 						},
 						{
 							"__identifier": "Entity",
-							"__grid": [81,54],
+							"__grid": [78,52],
 							"__pivot": [0,0],
 							"__tags": [],
 							"__tile": null,
@@ -511,7 +511,7 @@
 							"width": 16,
 							"height": 16,
 							"defUid": 6,
-							"px": [1296,864],
+							"px": [1248,832],
 							"fieldInstances": [
 								{ "__identifier": "type", "__type": "LocalEnum.EntityTypes", "__value": "STOP_SIGN", "__tile": null, "defUid": 9, "realEditorValues": [{
 									"id": "V_String",
@@ -519,8 +519,8 @@
 								}] },
 								{ "__identifier": "rotation", "__type": "Float", "__value": 0, "__tile": null, "defUid": 10, "realEditorValues": [] }
 							],
-							"__worldX": 1376,
-							"__worldY": 944
+							"__worldX": 1328,
+							"__worldY": 912
 						},
 						{
 							"__identifier": "Entity",
@@ -587,6 +587,160 @@
 							],
 							"__worldX": 1120,
 							"__worldY": 736
+						},
+						{
+							"__identifier": "Entity",
+							"__grid": [78,39],
+							"__pivot": [0,0],
+							"__tags": [],
+							"__tile": null,
+							"__smartColor": "#676767",
+							"iid": "24ea85c0-25d0-11ef-9316-cf58a7b3f94f",
+							"width": 16,
+							"height": 16,
+							"defUid": 6,
+							"px": [1248,624],
+							"fieldInstances": [
+								{ "__identifier": "type", "__type": "LocalEnum.EntityTypes", "__value": "STOP_SIGN", "__tile": null, "defUid": 9, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["STOP_SIGN"]
+								}] },
+								{ "__identifier": "rotation", "__type": "Float", "__value": 1.571, "__tile": null, "defUid": 10, "realEditorValues": [{ "id": "V_Float", "params": [1.5707963268] }] }
+							],
+							"__worldX": 1328,
+							"__worldY": 704
+						},
+						{
+							"__identifier": "Entity",
+							"__grid": [52,39],
+							"__pivot": [0,0],
+							"__tags": [],
+							"__tile": null,
+							"__smartColor": "#676767",
+							"iid": "4ca43340-25d0-11ef-9316-85102c1f9a48",
+							"width": 16,
+							"height": 16,
+							"defUid": 6,
+							"px": [832,624],
+							"fieldInstances": [
+								{ "__identifier": "type", "__type": "LocalEnum.EntityTypes", "__value": "STOP_SIGN", "__tile": null, "defUid": 9, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["STOP_SIGN"]
+								}] },
+								{ "__identifier": "rotation", "__type": "Float", "__value": 1.571, "__tile": null, "defUid": 10, "realEditorValues": [{ "id": "V_Float", "params": [1.5707963268] }] }
+							],
+							"__worldX": 912,
+							"__worldY": 704
+						},
+						{
+							"__identifier": "Entity",
+							"__grid": [69,39],
+							"__pivot": [0,0],
+							"__tags": [],
+							"__tile": null,
+							"__smartColor": "#676767",
+							"iid": "5f747c00-25d0-11ef-9316-35411983ab09",
+							"width": 16,
+							"height": 16,
+							"defUid": 6,
+							"px": [1104,624],
+							"fieldInstances": [
+								{ "__identifier": "type", "__type": "LocalEnum.EntityTypes", "__value": "STOP_SIGN", "__tile": null, "defUid": 9, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["STOP_SIGN"]
+								}] },
+								{ "__identifier": "rotation", "__type": "Float", "__value": 3.142, "__tile": null, "defUid": 10, "realEditorValues": [{ "id": "V_Float", "params": [3.1415926536] }] }
+							],
+							"__worldX": 1184,
+							"__worldY": 704
+						},
+						{
+							"__identifier": "Entity",
+							"__grid": [43,39],
+							"__pivot": [0,0],
+							"__tags": [],
+							"__tile": null,
+							"__smartColor": "#676767",
+							"iid": "64419470-25d0-11ef-9316-9b2236351ab4",
+							"width": 16,
+							"height": 16,
+							"defUid": 6,
+							"px": [688,624],
+							"fieldInstances": [
+								{ "__identifier": "type", "__type": "LocalEnum.EntityTypes", "__value": "STOP_SIGN", "__tile": null, "defUid": 9, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["STOP_SIGN"]
+								}] },
+								{ "__identifier": "rotation", "__type": "Float", "__value": 3.142, "__tile": null, "defUid": 10, "realEditorValues": [{ "id": "V_Float", "params": [3.1415926536] }] }
+							],
+							"__worldX": 768,
+							"__worldY": 704
+						},
+						{
+							"__identifier": "Entity",
+							"__grid": [43,30],
+							"__pivot": [0,0],
+							"__tags": [],
+							"__tile": null,
+							"__smartColor": "#676767",
+							"iid": "6be6ac10-25d0-11ef-9316-6782ccd44ad1",
+							"width": 16,
+							"height": 16,
+							"defUid": 6,
+							"px": [688,480],
+							"fieldInstances": [
+								{ "__identifier": "type", "__type": "LocalEnum.EntityTypes", "__value": "STOP_SIGN", "__tile": null, "defUid": 9, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["STOP_SIGN"]
+								}] },
+								{ "__identifier": "rotation", "__type": "Float", "__value": 4.712, "__tile": null, "defUid": 10, "realEditorValues": [{ "id": "V_Float", "params": [4.7123889804] }] }
+							],
+							"__worldX": 768,
+							"__worldY": 560
+						},
+						{
+							"__identifier": "Entity",
+							"__grid": [69,30],
+							"__pivot": [0,0],
+							"__tags": [],
+							"__tile": null,
+							"__smartColor": "#676767",
+							"iid": "72944450-25d0-11ef-9316-21bf3cd88aae",
+							"width": 16,
+							"height": 16,
+							"defUid": 6,
+							"px": [1104,480],
+							"fieldInstances": [
+								{ "__identifier": "type", "__type": "LocalEnum.EntityTypes", "__value": "STOP_SIGN", "__tile": null, "defUid": 9, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["STOP_SIGN"]
+								}] },
+								{ "__identifier": "rotation", "__type": "Float", "__value": 4.712, "__tile": null, "defUid": 10, "realEditorValues": [{ "id": "V_Float", "params": [4.7123889804] }] }
+							],
+							"__worldX": 1184,
+							"__worldY": 560
+						},
+						{
+							"__identifier": "Entity",
+							"__grid": [43,52],
+							"__pivot": [0,0],
+							"__tags": [],
+							"__tile": null,
+							"__smartColor": "#676767",
+							"iid": "8b11cc50-25d0-11ef-9316-af76de85f6ed",
+							"width": 16,
+							"height": 16,
+							"defUid": 6,
+							"px": [688,832],
+							"fieldInstances": [
+								{ "__identifier": "type", "__type": "LocalEnum.EntityTypes", "__value": "STOP_SIGN", "__tile": null, "defUid": 9, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["STOP_SIGN"]
+								}] },
+								{ "__identifier": "rotation", "__type": "Float", "__value": 4.712, "__tile": null, "defUid": 10, "realEditorValues": [{ "id": "V_Float", "params": [4.7123889804] }] }
+							],
+							"__worldX": 768,
+							"__worldY": 912
 						}
 					]
 				},

@@ -88,8 +88,8 @@
 				"id": "Entity",
 				"iid": "20788e00-25d0-11ef-9316-915ec7b2122a",
 				"layer": "Entities",
-				"x": 1296,
-				"y": 864,
+				"x": 1248,
+				"y": 832,
 				"width": 16,
 				"height": 16,
 				"color": 6776679,
@@ -138,6 +138,104 @@
 				"customFields": {
 					"type": "DELIVERY_STOP",
 					"rotation": 0
+				}
+			},
+			{
+				"id": "Entity",
+				"iid": "24ea85c0-25d0-11ef-9316-cf58a7b3f94f",
+				"layer": "Entities",
+				"x": 1248,
+				"y": 624,
+				"width": 16,
+				"height": 16,
+				"color": 6776679,
+				"customFields": {
+					"type": "STOP_SIGN",
+					"rotation": 1.571
+				}
+			},
+			{
+				"id": "Entity",
+				"iid": "4ca43340-25d0-11ef-9316-85102c1f9a48",
+				"layer": "Entities",
+				"x": 832,
+				"y": 624,
+				"width": 16,
+				"height": 16,
+				"color": 6776679,
+				"customFields": {
+					"type": "STOP_SIGN",
+					"rotation": 1.571
+				}
+			},
+			{
+				"id": "Entity",
+				"iid": "5f747c00-25d0-11ef-9316-35411983ab09",
+				"layer": "Entities",
+				"x": 1104,
+				"y": 624,
+				"width": 16,
+				"height": 16,
+				"color": 6776679,
+				"customFields": {
+					"type": "STOP_SIGN",
+					"rotation": 3.142
+				}
+			},
+			{
+				"id": "Entity",
+				"iid": "64419470-25d0-11ef-9316-9b2236351ab4",
+				"layer": "Entities",
+				"x": 688,
+				"y": 624,
+				"width": 16,
+				"height": 16,
+				"color": 6776679,
+				"customFields": {
+					"type": "STOP_SIGN",
+					"rotation": 3.142
+				}
+			},
+			{
+				"id": "Entity",
+				"iid": "6be6ac10-25d0-11ef-9316-6782ccd44ad1",
+				"layer": "Entities",
+				"x": 688,
+				"y": 480,
+				"width": 16,
+				"height": 16,
+				"color": 6776679,
+				"customFields": {
+					"type": "STOP_SIGN",
+					"rotation": 4.712
+				}
+			},
+			{
+				"id": "Entity",
+				"iid": "72944450-25d0-11ef-9316-21bf3cd88aae",
+				"layer": "Entities",
+				"x": 1104,
+				"y": 480,
+				"width": 16,
+				"height": 16,
+				"color": 6776679,
+				"customFields": {
+					"type": "STOP_SIGN",
+					"rotation": 4.712
+				}
+			},
+			{
+				"id": "Entity",
+				"iid": "8b11cc50-25d0-11ef-9316-af76de85f6ed",
+				"layer": "Entities",
+				"x": 688,
+				"y": 832,
+				"width": 16,
+				"height": 16,
+				"color": 6776679,
+				"customFields": {
+					"type": "STOP_SIGN",
+					"rotation": 4.712
 				}
 			}
 		]

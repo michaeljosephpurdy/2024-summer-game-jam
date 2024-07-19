@@ -2,11 +2,22 @@
 local GameState = class('GameState') ---[[@as GameState]]
 
 function GameState:initialize()
+  self.max_days = 5
+  self.money = 0
   self.delivered = 0
+  self.delivery_direction = ''
+  self.accidents = 0
+  self.last_accident = 0
   self.current_destination = nil
   self.boxes = {}
   self.stops = {}
   self.controls_locked = false
+
+  self.seconds = 0
+  self.minutes = 0
+  self.hours = 9
+  self.days = 0
+  self.real_seconds_to_game_seconds = 20
 end
 
 local function find_random(tbl, filter)
@@ -75,6 +86,7 @@ end
 function GameState:increment_delivered()
   self.delivered = self.delivered + 1
   print('delieverd is now ' .. self.delivered)
+  self.delivery_direction = ''
 end
 
 function GameState:set_delivered(delivered)
@@ -85,6 +97,33 @@ function GameState:get_current_destination()
   return self.current_destination
 end
 
+function GameState:calculate_direction(x, y)
+  if not self.current_destination then
+    self.delivery_direction = ''
+    return
+  end
+  local angle = math.atan2(y - self.current_destination.y, x - self.current_destination.x)
+  local dx = 1 * math.cos(angle)
+  local dy = 1 * math.sin(angle)
+  local NS = ''
+  local EW = ''
+  if dx > -0.5 and dx < 0.5 then
+    EW = ''
+  elseif dx > 0 then
+    EW = 'W'
+  else
+    EW = 'E'
+  end
+  if dy > -0.5 and dy < 0.5 then
+    NS = ''
+  elseif dy > 0 then
+    NS = 'N'
+  else
+    NS = 'S'
+  end
+  self.delivery_direction = NS .. EW
+end
+
 function GameState:toggle_controls()
   self.controls_locked = not self.controls_locked
 end
@@ -92,5 +131,25 @@ end
 function GameState:are_controls_locked()
   return self.controls_locked
 end
+
+function GameState:record_accident() end
+
+function GameState:progress_time(dt)
+  self.seconds = self.seconds + (dt * self.real_seconds_to_game_seconds)
+  if self.seconds >= 60 then
+    self.minutes = self.minutes + 15
+    self.seconds = 0
+  end
+  if self.minutes >= 60 then
+    self.hours = self.hours + 1
+    self.minutes = 0
+  end
+  if self.hours >= 24 then
+    self.days = self.days + 1
+    self.hours = 0
+  end
+end
+
+function GameState:is_game_over() end
 
 return GameState
