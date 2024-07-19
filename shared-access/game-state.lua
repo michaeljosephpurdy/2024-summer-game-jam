@@ -95,6 +95,7 @@ function GameState:increment_delivered()
   print('delieverd is now ' .. self.delivered)
   self.delivery_direction = ''
   self.money = self.money + 5
+  self.current_destination = nil
 end
 
 function GameState:set_delivered(delivered)

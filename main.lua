@@ -28,7 +28,6 @@ function love.load()
     require('systems.entity-movement-system'),
     require('systems.collision-detection-system'),
     require('systems.delivery-detection-system'),
-    require('systems.delivery-indicator-system'),
     require('systems.box-delivery-linking-system'),
     require('systems.repel-system'),
     require('systems.friction-system'),

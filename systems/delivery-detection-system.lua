@@ -11,7 +11,7 @@ function DeliveryDetectionSystem:onAdd(e)
 end
 
 function DeliveryDetectionSystem:process(e, dt)
-  e.hidden = not e.current
+  e.hidden = e ~= self.game_state:get_current_destination()
   e.rotation = e.rotation + e.rotation_speed * dt
   e.scale = math.sin(e.rotation) / 8 + 1
   e.xx, e.yy = e.x + 1, e.y + 1

@@ -438,7 +438,7 @@
 				"id": "Entity",
 				"iid": "8e408520-25d0-11ef-9316-1390f33d7999",
 				"layer": "Entities",
-				"x": 352,
+				"x": 272,
 				"y": 560,
 				"width": 16,
 				"height": 16,
@@ -522,7 +522,7 @@
 				"id": "Entity",
 				"iid": "96dc58d0-25d0-11ef-9316-c175f4c1d1e1",
 				"layer": "Entities",
-				"x": 1328,
+				"x": 1568,
 				"y": 512,
 				"width": 16,
 				"height": 16,
@@ -642,6 +642,20 @@
 				"customFields": {
 					"type": "BOX",
 					"rotation": 0.55
+				}
+			},
+			{
+				"id": "Entity",
+				"iid": "17dbc6f0-25d0-11ef-9316-5b2275238496",
+				"layer": "Entities",
+				"x": 1440,
+				"y": 816,
+				"width": 16,
+				"height": 16,
+				"color": 6776679,
+				"customFields": {
+					"type": "BOX",
+					"rotation": -0.15
 				}
 			}
 		]
