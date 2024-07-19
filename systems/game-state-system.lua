@@ -12,29 +12,65 @@ function GameStateSystem:initialize(props)
   self.rect_color_r = 41 / 255
   self.rect_color_g = 54 / 255
   self.rect_color_b = 111 / 255
+  self.is_done = false
 end
 
 function GameStateSystem:update(dt)
   if not self.game_state:are_controls_locked() then
     self.game_state:progress_time(dt)
-    if self.game_state:is_game_over() then
-      self.world:clearEntities()
-      self.game_state:toggle_controls()
+    if self.game_state:is_game_over() and not self.is_done then
+      self.is_done = true
+      local end_message = 'Dispatcher: Try better next' .. NEW_LINE .. 'time.'
+      if self.game_state.last_accident == 0 then
+        end_message = 'Dispatcher: Time for pizza!'
+      end
       self.world:addEntity({
         is_dialogue = true,
         -- stylua: ignore
         messages = {
-            'Thanks for playing!',
-            tostring(self.game_state.days - self.game_state.last_accident).. ' Days Since Last Accident',
-            tostring(self.game_state.max_days - self.game_state.last_accident).. ' Days Since Last Accident' ..NEW_LINE..
-            'You delivered '..self.game_state.delivered.. 'packages',
-            tostring(self.game_state.max_days - self.game_state.last_accident).. ' Days Since Last Accident' ..NEW_LINE..
-            'You delivered '..self.game_state.delivered.. 'packages'..NEW_LINE..
-            'You made $'..self.game_state.money,
+          'Dispatcher: Alright, that\'s '..NEW_LINE..'it for the day.',
+          end_message
         },
         time = 3,
         on_complete = function()
           self.world:clearEntities()
+          self.game_state:toggle_controls()
+          self.world:addEntity({
+            is_dialogue = true,
+            -- stylua: ignore
+            messages = {
+                'Thanks for playing!',
+                'Thanks for playing!'..NEW_LINE..
+                tostring(self.game_state.days - self.game_state.last_accident).. ' Days Since Last Accident',
+
+                'Thanks for playing!'..NEW_LINE..
+                tostring(self.game_state.max_days - self.game_state.last_accident).. ' Days Since Last Accident' ..NEW_LINE..
+                'You delivered '..self.game_state.delivered.. ' packages',
+
+                'Thanks for playing!'..NEW_LINE..
+                tostring(self.game_state.max_days - self.game_state.last_accident).. ' Days Since Last Accident' ..NEW_LINE..
+                'You delivered '..self.game_state.delivered.. ' packages'..NEW_LINE..
+                'You made $'..self.game_state.money,
+
+                'Thanks for playing!'..NEW_LINE..
+                tostring(self.game_state.max_days - self.game_state.last_accident).. ' Days Since Last Accident' ..NEW_LINE..
+                'You delivered '..self.game_state.delivered.. ' packages'..NEW_LINE..
+                'You made $'..self.game_state.money..NEW_LINE..
+                'You caused '..self.game_state.accidents..' accidents',
+
+                'Thanks for playing!'..NEW_LINE..
+                tostring(self.game_state.max_days - self.game_state.last_accident).. ' Days Since Last Accident' ..NEW_LINE..
+                'You delivered '..self.game_state.delivered.. ' packages'..NEW_LINE..
+                'You made $'..self.game_state.money..NEW_LINE..
+                'You caused '..self.game_state.accidents..' accidents'..
+                NEW_LINE..NEW_LINE..NEW_LINE..NEW_LINE..
+                'game by Mike Purdy',
+            },
+            time = 2,
+            on_complete = function()
+              self.world:clearEntities()
+            end,
+          })
         end,
       })
     end

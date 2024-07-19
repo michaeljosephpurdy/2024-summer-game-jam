@@ -30,14 +30,13 @@ function DialogueSystem:onAdd(e)
 end
 
 function DialogueSystem:next_message(e)
+  e.current_time = 0
   e.message_index = e.message_index + 1
   e.current_message = e.messages[e.message_index]
-  if not e.current_message then
-    return nil
+  if e.current_message then
+    e.offset = self.font:getWidth(e.current_message) / 2
+    e.height = self.font:getHeight(e.current_message) * count_lines(e.current_message)
   end
-  e.offset = self.font:getWidth(e.current_message) / 2
-  e.height = self.font:getHeight(e.current_message) * count_lines(e.current_message)
-  e.current_time = 0
   return e.current_message
 end
 
