@@ -25,7 +25,7 @@ function GameStateSystem:update(dt)
         -- stylua: ignore
         messages = {
             'Thanks for playing!',
-            tostring(self.game_state.max_days - self.game_state.last_accident).. ' Days Since Last Accident',
+            tostring(self.game_state.days - self.game_state.last_accident).. ' Days Since Last Accident',
             tostring(self.game_state.max_days - self.game_state.last_accident).. ' Days Since Last Accident' ..NEW_LINE..
             'You delivered '..self.game_state.delivered.. 'packages',
             tostring(self.game_state.max_days - self.game_state.last_accident).. ' Days Since Last Accident' ..NEW_LINE..
@@ -51,11 +51,19 @@ function GameStateSystem:update(dt)
   --love.graphics.rectangle('fill', 0, y, GAME_WIDTH, e.height)
 
   -- stylua: ignore start
-  love.graphics.print( self.game_state.last_accident .. ' Days Since Last Accident', self.font, 10, 10)
+  love.graphics.print( tostring(self.game_state.days - self.game_state.last_accident) .. ' Days Since Last Accident', self.font, 10, 10)
   love.graphics.print('Deliveries: ' .. self.game_state.delivered, self.font, 10, 20)
   love.graphics.print('Money: $' .. self.game_state.money, self.font, 10, 30)
-  love.graphics.print(self.game_state.hours .. ':' .. math.floor(self.game_state.minutes), self.font, 10, 40)
+  local display_hours = tostring(self.game_state.hours)
+  if display_hours == '0' then display_hours = '00'
+  end
+  local display_minutes = tostring(math.floor(self.game_state.minutes))
+  if display_minutes == '0' then display_minutes = '00'
+  end
+  love.graphics.print(display_hours .. ':' .. display_minutes, self.font, 10, 40)
+  if self.game_state:get_current_destination() then
   love.graphics.print('Next Delivery: '..self.game_state.delivery_direction, self.font, 10, GAME_HEIGHT - 20)
+  end
   -- stylua: ignore end
   love.graphics.pop()
 end

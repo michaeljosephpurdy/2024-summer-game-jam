@@ -57,12 +57,13 @@ EntityFactory.entities = {
   },
   [EntityTypes.TRUCK_BACK_DOOR] = {
     rotation = 0,
-    collision_radius = 8,
+    collision_radius = 16,
     is_truck_back_door = true,
     revolve_around = true,
     pivot_offset = math.rad(-180),
     origin_offset = 32,
     draw_debug = true,
+    boxes = {},
   },
   [EntityTypes.CRUSHED_BOX] = {
     sprite = love.graphics.newImage('assets/box-crushed.png'),
@@ -86,6 +87,7 @@ EntityFactory.entities = {
     debug_draw = true,
     can_be_repelled = true,
     repel_offset = 2,
+    on_ground = true,
   },
   [EntityTypes.BOX_TRIGGER] = {
     rotation = 0,
@@ -196,6 +198,7 @@ EntityFactory.entities = {
 ---@return table
 function EntityFactory:build(e)
   local entity = self:build_single(e)
+  entity.type = e.type
   if entity.is_player_spawn then
     local player = self:build_single({
       x = entity.x,
@@ -210,6 +213,7 @@ function EntityFactory:build(e)
   -- to make sure player doesn't just push box around the whole time,
   -- and can actually pick it up
   if entity.is_box then
+    entity.rotation = math.random() * 10
     local collider = self:build_single({
       x = entity.x,
       y = entity.y,
@@ -265,7 +269,7 @@ function EntityFactory:build(e)
       })
       return { entity, door, back_door }
     end
-    return { entity, door }
+    return { entity, door, back_door }
   end
   return { entity }
 end

@@ -2,7 +2,8 @@
 local GameState = class('GameState') ---[[@as GameState]]
 
 function GameState:initialize()
-  self.max_days = 1
+  self.max_days = 5
+  self.days = 4
   self.money = 0
   self.delivered = 0
 
@@ -18,8 +19,7 @@ function GameState:initialize()
   self.seconds = 0
   self.minutes = 0
   self.hours = 9
-  self.days = 0
-  self.real_seconds_to_game_seconds = 80
+  self.real_seconds_to_game_seconds = 10
 end
 
 local function find_random(tbl, filter)
@@ -55,6 +55,7 @@ function GameState:add_delivery_stop(stop)
   end
   box.linked = stop
   stop.linked = box
+  print('delivery stops: ' .. #self.stops)
 end
 
 function GameState:add_box(box)
@@ -70,9 +71,13 @@ function GameState:add_box(box)
   end
   box.linked = stop
   stop.linked = box
+  print('boxes: ' .. #self.boxes)
 end
 
 function GameState:mark_box_as_current(current_box)
+  if not current_box then
+    self.current_destination = nil
+  end
   for _, box in pairs(self.boxes) do
     local current = box == current_box
     box.current = current
@@ -137,7 +142,7 @@ end
 
 function GameState:record_accident()
   self.accidents = self.accidents + 1
-  self.money = self.money - 4
+  self.last_accident = self.days
 end
 
 function GameState:progress_time(dt)

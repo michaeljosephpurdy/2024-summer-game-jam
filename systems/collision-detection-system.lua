@@ -10,6 +10,7 @@ end
 function CollisionDetectionSystem:process(e, dt)
   e.nearest_vehicle = nil
   e.nearest_box = nil
+  e.nearest_back_door = nil
   local future_x = e.x + (e.dx * e.speed * dt)
   local future_y = e.y + (e.dy * e.speed * dt)
   -- first, we'll check horizontal collisions
@@ -57,7 +58,11 @@ function CollisionDetectionSystem:process(e, dt)
         e.nearest_vehicle = other.trigger
       elseif e.is_player and other.is_trigger and other.trigger.is_box then
         e.nearest_box = other.trigger
-      elseif e.is_truck and e.is_active and other.is_box and not other.protected then
+      elseif e.is_player and other.is_truck_back_door then
+        e.nearest_back_door = other
+      elseif e.is_truck and other.is_truck then
+        e.speed = 0
+      elseif e.is_truck and e.is_active and other.is_box and other.on_ground then
         self.world:addEntity({ accident_type = 'BOX', entity = other })
       elseif e.is_truck and other.is_stop_sign then
         self.world:addEntity({ accident_type = 'STOP_SIGN', entity = other })

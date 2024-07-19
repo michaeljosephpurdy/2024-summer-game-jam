@@ -11,6 +11,7 @@ function AccidentSystem:onAdd(e)
     return
   end
   e.entity.accident_recorded = true
+  self.game_state:record_accident()
   local publish_message = true
   if self.game_state.accidents == 1 then
     self.world:addEntity({
@@ -76,7 +77,6 @@ function AccidentSystem:onAdd(e)
       end
     end
   end
-  self.game_state:record_accident()
   self.world:removeEntity(e.entity)
 end
 

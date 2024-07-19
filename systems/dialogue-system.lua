@@ -46,7 +46,6 @@ function DialogueSystem:process(e, dt)
     e.current_time = e.current_time + dt
     if e.current_time > e.time then
       if not self:next_message(e) then
-        print('remove message')
         self.world:remove(e)
         return
       end

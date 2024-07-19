@@ -21,6 +21,7 @@ function love.load()
     require('systems.keyboard-state-system'),
     require('systems.tile-map-system'),
     require('systems.vehicle-input-system'),
+    require('systems.truck-package-system'),
     require('systems.character-interaction-system'),
     require('systems.character-input-system'),
     require('systems.sprite-animating-system'),
@@ -95,15 +96,16 @@ function love.load()
       'Dispatch: Alright, listen up' .. NEW_LINE .. 'newbie, this is how its' .. NEW_LINE .. 'gonna be',
       'Dispatch: You need to deliver' .. NEW_LINE .. 'these packages.',
       'Dispatch: The more you deliver,' .. NEW_LINE .. 'the more money you get.' .. NEW_LINE .. 'Simple.',
+      'Dispatch: The truck loaders have' .. NEW_LINE .. 'the day off, you gotta' .. NEW_LINE .. 'load the truck',
+      'Dispatch: Pick up boxes and put' .. NEW_LINE .. 'them in the back.',
     },
   }
   local second_message = {
     is_dialogue = true,
     messages = {
-      'Dispatch: Oh yeah, the truck' .. NEW_LINE .. 'loaders have today off',
-      'Dispatch: You gotta load' .. NEW_LINE .. 'the truck, too.',
+      'Dispatch: The truck can fit' .. NEW_LINE .. 'five boxes',
+      'Dispatch: Then you get in' .. NEW_LINE .. 'the truck and drive' .. NEW_LINE .. 'to the Next Delivery',
     },
-    time = 3,
   }
   local third_message = {
     is_dialogue = true,
@@ -111,9 +113,9 @@ function love.load()
       'Dispatch: And one more thing...',
       'Dispatch: If we make it 5 days' .. NEW_LINE .. 'without an accident' .. NEW_LINE .. 'we get a pizza party.',
       "Dispatch: We're currently at 4...",
-      "Dispatch: Don't mess it up",
+      "Dispatch: Don't mess it up.",
+      'Dispatch: What are you waiting' .. NEW_LINE .. 'for? Get moving.',
     },
-    time = 3,
   }
   second_message.on_complete = function()
     tiny_world:addEntity(third_message)

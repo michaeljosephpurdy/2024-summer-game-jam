@@ -21,10 +21,10 @@ function CameraSystem:initialize(props)
   self.offset_x = -GAME_WIDTH / 2
   self.offset_y = -GAME_HEIGHT / 2
   -- boundaries -- TODO: stop hardcoding
-  self.left_boundary = 176
-  self.top_boundary = 64
-  self.right_boundary = self.left_boundary + 1580
-  self.bot_boundary = self.top_boundary + 1040
+  self.left_boundary = 216
+  self.top_boundary = 200
+  self.right_boundary = 1793
+  self.bot_boundary = 1246
   self.speed = 5
 end
 
