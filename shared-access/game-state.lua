@@ -2,7 +2,7 @@
 local GameState = class('GameState') ---[[@as GameState]]
 
 function GameState:initialize()
-  self.max_days = 5
+  self.max_days = 1
   self.money = 0
   self.delivered = 0
 
@@ -19,7 +19,7 @@ function GameState:initialize()
   self.minutes = 0
   self.hours = 9
   self.days = 0
-  self.real_seconds_to_game_seconds = 20
+  self.real_seconds_to_game_seconds = 80
 end
 
 local function find_random(tbl, filter)
@@ -89,6 +89,7 @@ function GameState:increment_delivered()
   self.delivered = self.delivered + 1
   print('delieverd is now ' .. self.delivered)
   self.delivery_direction = ''
+  self.money = self.money + 5
 end
 
 function GameState:set_delivered(delivered)
@@ -134,7 +135,10 @@ function GameState:are_controls_locked()
   return self.controls_locked
 end
 
-function GameState:record_accident() end
+function GameState:record_accident()
+  self.accidents = self.accidents + 1
+  self.money = self.money - 4
+end
 
 function GameState:progress_time(dt)
   self.seconds = self.seconds + (dt * self.real_seconds_to_game_seconds)
@@ -152,6 +156,8 @@ function GameState:progress_time(dt)
   end
 end
 
-function GameState:is_game_over() end
+function GameState:is_game_over()
+  return self.days == self.max_days
+end
 
 return GameState

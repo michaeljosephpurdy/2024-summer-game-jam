@@ -54,7 +54,6 @@ function love.load()
 
   local windowWidth, windowHeight = love.window.getDesktopDimensions()
   love.graphics.setDefaultFilter('nearest', 'nearest')
-  --love.graphics.setBackgroundColor(PALETTE.LIGHTEST)
 
   logger = require('logger')()
 
@@ -90,21 +89,39 @@ function love.load()
     is_event = true,
     load_tile_map = true,
   })
-  -- stylua: ignore
-  tiny_world:addEntity({
+  local first_message = {
     is_dialogue = true,
     messages = {
-      'Dispatch: Ugh, I got the newbie?',
-      'Dispatch: This is how it\'s gonna'..NEW_LINE..
-      'go. You need to deliver these'..NEW_LINE..
-      'packages.',
-      'Dispatch: The more you deliver,'..NEW_LINE..
-      'the more money you get.'..NEW_LINE..
-      'Simple.'
+      'Dispatch: Alright, listen up' .. NEW_LINE .. 'newbie, this is how its' .. NEW_LINE .. 'gonna be',
+      'Dispatch: You need to deliver' .. NEW_LINE .. 'these packages.',
+      'Dispatch: The more you deliver,' .. NEW_LINE .. 'the more money you get.' .. NEW_LINE .. 'Simple.',
     },
-    on_complete = function()
-    end,
-  })
+  }
+  local second_message = {
+    is_dialogue = true,
+    messages = {
+      'Dispatch: Oh yeah, the truck' .. NEW_LINE .. 'loaders have today off',
+      'Dispatch: You gotta load' .. NEW_LINE .. 'the truck, too.',
+    },
+    time = 3,
+  }
+  local third_message = {
+    is_dialogue = true,
+    messages = {
+      'Dispatch: And one more thing...',
+      'Dispatch: If we make it 5 days' .. NEW_LINE .. 'without an accident' .. NEW_LINE .. 'we get a pizza party.',
+      "Dispatch: We're currently at 4...",
+      "Dispatch: Don't mess it up",
+    },
+    time = 3,
+  }
+  second_message.on_complete = function()
+    tiny_world:addEntity(third_message)
+  end
+  first_message.on_complete = function()
+    tiny_world:addEntity(second_message)
+  end
+  tiny_world:addEntity(first_message)
 end
 
 function love.update(dt)

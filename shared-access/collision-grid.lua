@@ -20,7 +20,7 @@ function CollisionGrid:initialize(cell_size, width, height)
   -- However, in this case, drawing at offset makes rotation
   -- calculation very difficult.  So, instead we'll apply this
   -- offset on the collision grid directly
-  self.cell_offset = -cell_size / 8
+  self.cell_offset = cell_size / 4
 end
 
 function CollisionGrid:to_grid(x, y)

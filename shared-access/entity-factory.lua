@@ -36,7 +36,7 @@ EntityFactory.entities = {
     x = 0,
     y = 0,
     sprite = love.graphics.newImage('assets/stop-sign.png'),
-    collision_radius = 6,
+    collision_radius = 4,
     origin_offset = 16,
     rotation = 0,
     draw_debug = true,
@@ -61,7 +61,7 @@ EntityFactory.entities = {
     is_truck_back_door = true,
     revolve_around = true,
     pivot_offset = math.rad(-180),
-    origin_offset = 0,
+    origin_offset = 32,
     draw_debug = true,
   },
   [EntityTypes.CRUSHED_BOX] = {
@@ -228,9 +228,19 @@ function EntityFactory:build(e)
       type = 'VEHICLE_DOOR',
       trigger = entity,
     })
+    local back_door = self:build_single({
+      x = entity.x,
+      y = entity.y,
+      rotation = entity.rotation,
+      type = 'TRUCK_BACK_DOOR',
+      trigger = entity,
+    })
     door.pivot_point = entity
+    back_door.pivot_point = entity
     entity.door = door
+    entity.back_door = back_door
     door.vehicle = entity
+    back_door.vehicle = entity
     door.colliders = {} -- add colliders for truck
     if entity.type ~= 'AMAZON_TRUCK' then
       local front_collider = self:build_single({
@@ -253,7 +263,7 @@ function EntityFactory:build(e)
         type = 'INVISIBLE_COLLIDER',
         pivot_point = entity,
       })
-      return { entity, door, front_collider, rear_collider }
+      return { entity, door, back_door }
     end
     return { entity, door }
   end

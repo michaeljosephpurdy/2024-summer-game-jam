@@ -40,6 +40,9 @@ function GameStateSystem:update(dt)
     end
   end
 
+  if self.game_state:is_game_over() then
+    return
+  end
   --
   love.graphics.push()
   love.graphics.origin()
