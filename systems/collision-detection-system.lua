@@ -11,6 +11,7 @@ function CollisionDetectionSystem:process(e, dt)
   e.nearest_vehicle = nil
   e.nearest_box = nil
   e.nearest_back_door = nil
+  e.nearest_delivery_stop = nil
   local future_x = e.x + (e.dx * e.speed * dt)
   local future_y = e.y + (e.dy * e.speed * dt)
   -- first, we'll check horizontal collisions
