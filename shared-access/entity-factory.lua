@@ -225,12 +225,20 @@ function EntityFactory:build(e)
   end
   -- if it's a vehicle, we need to add the door
   if entity.is_vehicle then
-    local door = self:build_single({
+    local driver_door = self:build_single({
       x = entity.x,
       y = entity.y,
       rotation = entity.rotation,
       type = 'VEHICLE_DOOR',
       trigger = entity,
+    })
+    local passenger_door = self:build_single({
+      x = entity.x,
+      y = entity.y,
+      rotation = entity.rotation,
+      type = 'VEHICLE_DOOR',
+      trigger = entity,
+      pivot_offset = math.rad(90),
     })
     local back_door = self:build_single({
       x = entity.x,
@@ -239,37 +247,16 @@ function EntityFactory:build(e)
       type = 'TRUCK_BACK_DOOR',
       trigger = entity,
     })
-    door.pivot_point = entity
+    driver_door.pivot_point = entity
+    passenger_door.pivot_point = entity
     back_door.pivot_point = entity
-    entity.door = door
+    entity.door = driver_door
+    entity.door = passenger_door
     entity.back_door = back_door
-    door.vehicle = entity
+    driver_door.vehicle = entity
+    passenger_door.vehicle = entity
     back_door.vehicle = entity
-    door.colliders = {} -- add colliders for truck
-    if entity.type ~= 'AMAZON_TRUCK' then
-      local front_collider = self:build_single({
-        rotation = 0,
-        collision_radius = 16,
-        revolve_around = true,
-        pivot_offset = math.rad(-90),
-        origin_offset = 16,
-        draw_debug = true,
-        type = 'INVISIBLE_COLLIDER',
-        pivot_point = entity,
-      })
-      local rear_collider = self:build_single({
-        rotation = 0,
-        collision_radius = 16,
-        revolve_around = true,
-        pivot_offset = math.rad(-90),
-        origin_offset = 16,
-        draw_debug = true,
-        type = 'INVISIBLE_COLLIDER',
-        pivot_point = entity,
-      })
-      return { entity, door, back_door }
-    end
-    return { entity, door, back_door }
+    return { entity, driver_door, passenger_door, back_door }
   end
   return { entity }
 end
