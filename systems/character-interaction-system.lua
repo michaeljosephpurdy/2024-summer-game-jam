@@ -37,7 +37,12 @@ function CharacterInteractionSystem:process(e, _)
       e.vehicle.is_active = true
       e.is_driving = true
       e.pivot_point = e.vehicle
-    elseif not e.is_carrying_box and e.nearest_box and not e.nearest_box.is_delivered then
+    elseif
+      not e.is_carrying_box
+      and e.nearest_box
+      and not e.nearest_box.is_crushed
+      and not e.nearest_box.is_delivered
+    then
       print('pick up box ' .. tostring(e.nearest_box))
       e.is_carrying_box = true
       e.box = e.nearest_box
@@ -56,6 +61,14 @@ function CharacterInteractionSystem:process(e, _)
       e.box.hidden = false
       e.box.pivot_point = e
       e.nearest_back_door.next_box = nil
+    elseif e.is_carry_box and e.nearest_delivery_stop then
+      print('put box in truck')
+      e.box.on_ground = true
+      e.box.in_truck = false
+      e.box.hidden = false
+      e.box.is_active = true
+      e.is_carrying_box = false
+      e.box = nil
     elseif e.is_carrying_box and e.nearest_back_door and e.nearest_back_door.can_fit_box then
       print('put box in truck')
       e.box.on_ground = false

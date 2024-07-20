@@ -54,6 +54,8 @@ function CollisionDetectionSystem:process(e, dt)
       elseif other.is_solid then
         other_push_player = false
         player_push_other = false
+      elseif e.is_player and other.is_delivery_stop then
+        e.nearest_delivery_stop = other
       elseif e.is_player and other.is_trigger and other.is_vehicle_door then
         e.nearest_vehicle = other.trigger
       elseif e.is_player and other.is_trigger and other.trigger.is_box then
