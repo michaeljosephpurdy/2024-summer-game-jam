@@ -11,10 +11,14 @@ images:
 	aseprite -b --layer "normal" assets/box.aseprite --save-as assets/box.png
 	aseprite -b --layer "crushed" assets/box.aseprite --save-as assets/box-crushed.png
 	aseprite -b assets/delivery-stop.aseprite --save-as assets/delivery-stop.png
-	aseprite -b assets/player-truck.aseprite --save-as assets/player-truck.png
+	# truck
+	aseprite -b --layer "normal" assets/player-truck.aseprite --save-as assets/player-truck-normal.png
+	aseprite -b --layer "trunk-open" assets/player-truck.aseprite --save-as assets/player-truck-open-trunk.png
+	aseprite -b --layer "passenger-door-open" assets/player-truck.aseprite --save-as assets/player-truck-open-passenger.png
+	aseprite -b --layer "driver-door-open" assets/player-truck.aseprite --save-as assets/player-truck-open-driver.png
+	# stop sign
 	aseprite -b --layer "normal" assets/stop-sign.aseprite --save-as assets/stop-sign.png
 	aseprite -b --layer "crushed" assets/stop-sign.aseprite --save-as assets/stop-sign-crushed.png
-	aseprite -b assets/indicator.aseprite --save-as assets/indicator.png
 
 serve:
 	rm -rf makelove-build

@@ -22,10 +22,12 @@ function love.load()
     require('systems.tile-map-system'),
     require('systems.vehicle-input-system'),
     require('systems.truck-package-system'),
+    require('systems.vehicle-interaction-system'),
     require('systems.character-interaction-system'),
     require('systems.character-input-system'),
     require('systems.sprite-animating-system'),
     require('systems.entity-movement-system'),
+    require('systems.trigger-resetting-system'),
     require('systems.collision-detection-system'),
     require('systems.delivery-detection-system'),
     require('systems.box-delivery-linking-system'),
@@ -42,10 +44,10 @@ function love.load()
     require('systems.game-state-system'),
     require('systems.dialogue-system'),
     -- cleanup
-    require('systems.debug-overlay-system'),
     require('systems.entity-cleanup-system'),
     require('systems.time-to-live-system'),
     require('systems.delayed-function-execution-system'),
+    require('systems.debug-overlay-system'),
   }
 
   PALETTE = {

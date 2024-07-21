@@ -45,6 +45,9 @@ function CollisionDetectionSystem:process(e, dt)
     local overlaps = distance_squared <= max_distance * max_distance
 
     if overlaps then
+      if e.is_player and other.is_trigger then
+        other.triggered = true
+      end
       local other_push_player = other.can_repel
       local player_push_other = other.can_be_repelled
       local power_from_other = other.repel_force
@@ -59,10 +62,12 @@ function CollisionDetectionSystem:process(e, dt)
         e.nearest_delivery_stop = other
       elseif e.is_player and other.is_trigger and other.is_vehicle_door then
         e.nearest_vehicle = other.trigger
+        other.trigger.near_player = true
       elseif e.is_player and other.is_trigger and other.trigger.is_box then
         e.nearest_box = other.trigger
       elseif e.is_player and other.is_truck_back_door then
         e.nearest_back_door = other
+        other.trigger.near_player = true
       elseif e.is_truck and other.is_truck then
         e.speed = 0
       elseif e.is_truck and e.is_active and other.is_box and other.on_ground then
