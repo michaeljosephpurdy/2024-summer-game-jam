@@ -41,6 +41,7 @@ function love.load()
     require('systems.middle-sprite-drawing-system'),
     require('systems.upper-sprite-drawing-system'),
     require('systems.foreground-sprite-drawing-system'),
+    require('systems.text-display-system'),
     require('systems.game-state-system'),
     require('systems.dialogue-system'),
     -- cleanup

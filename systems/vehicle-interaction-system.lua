@@ -12,6 +12,13 @@ function VehicleInteractionSystem:process(e, _)
     e.sprite = e.passenger_door_open_sprite
   elseif e.back_door.triggered then
     e.sprite = e.trunk_door_open_sprite
+    self.world:addEntity({
+      is_text = true,
+      text = tostring(e.box_count) .. '/' .. tostring(e.max_boxes),
+      x = e.x,
+      y = e.y,
+      time_to_live = 0,
+    })
   else
     e.sprite = e.normal_sprite
   end
