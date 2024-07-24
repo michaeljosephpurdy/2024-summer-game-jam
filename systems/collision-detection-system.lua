@@ -35,10 +35,6 @@ function CollisionDetectionSystem:process(e, dt)
   -- third, we'll check all surrounding collisions
   local collisions = self.collision_grid:query(future_x, future_y)
   for _, other in pairs(collisions) do
-    local debug_rect = self.collision_grid:get_rect(other)
-    --debug_rect.draw_debug = true
-    debug_rect.time_to_live = 0
-    self.world:addEntity(debug_rect)
     local max_distance = e.collision_radius + other.collision_radius
     local distance_squared = ((other.x - future_x) * (other.x - future_x))
       + ((other.y - future_y) * (other.y - future_y))

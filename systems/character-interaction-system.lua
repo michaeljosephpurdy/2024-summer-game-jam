@@ -31,12 +31,7 @@ function CharacterInteractionSystem:process(e, _)
       e.pivot_point = nil
       e.animation_sprite = e.normal_idle_sprites
       e.animation_time = 0
-    elseif
-      not e.is_carrying_box
-      and e.nearest_box
-      and not e.nearest_box.is_crushed
-      and not e.nearest_box.is_delivered
-    then
+    elseif not e.is_carrying_box and e.nearest_box and not e.nearest_box.is_delivered then
       print('pick up box ' .. tostring(e.nearest_box))
       e.is_carrying_box = true
       e.box = e.nearest_box

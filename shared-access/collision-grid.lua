@@ -42,8 +42,10 @@ function CollisionGrid:remove(entity)
   for i, ent in ipairs(self.grid[grid_y][grid_x]) do
     if ent == entity then
       table.remove(self.grid[grid_y][grid_x], i)
+      return true
     end
   end
+  return false
 end
 
 function CollisionGrid:update(entity, new_x, new_y)

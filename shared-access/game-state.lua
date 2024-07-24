@@ -8,6 +8,9 @@ function GameState:initialize()
   self.money = 0
   self.delivered = 0
 
+  self.display_truck_states = false
+  self.current_truck_box_count = ''
+
   self.delivery_direction = ''
   self.accidents = 0
   self.last_accident = 0

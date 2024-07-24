@@ -101,7 +101,10 @@ function GameStateSystem:update(dt)
   end
   love.graphics.print(display_hours .. ':' .. display_minutes, self.font, 10, 40)
   if self.game_state:get_current_destination() then
-  love.graphics.print('Next Delivery: '..self.game_state.delivery_direction, self.font, 10, GAME_HEIGHT - 20)
+  love.graphics.print('Next Delivery: '..self.game_state.delivery_direction, self.font, 10, GAME_HEIGHT - 25)
+  end
+  if self.game_state.display_truck_states then
+  love.graphics.print('Boxes in truck: '..self.game_state.current_truck_box_count, self.font, 10, GAME_HEIGHT - 15)
   end
   -- stylua: ignore end
   love.graphics.pop()

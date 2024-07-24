@@ -226,6 +226,7 @@ function EntityFactory:build(e)
       pivot_point = entity,
       trigger = entity,
     })
+    entity.triggered_by = { collider }
     return { entity, collider }
   end
   -- if it's a vehicle, we need to add the door
@@ -252,6 +253,7 @@ function EntityFactory:build(e)
       type = 'TRUCK_BACK_DOOR',
       trigger = entity,
     })
+    entity.triggered_by = { driver_door, passenger_door, back_door }
     driver_door.pivot_point = entity
     passenger_door.pivot_point = entity
     back_door.pivot_point = entity
