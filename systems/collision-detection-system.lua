@@ -64,7 +64,15 @@ function CollisionDetectionSystem:process(e, dt)
         e.speed = 0
       elseif e.is_vehicle and e.is_active and other.is_box and other.on_ground then
         self.world:addEntity({ accident_type = 'BOX', entity = other })
-      elseif e.is_vehicle and other.is_stop_sign then
+      elseif
+        e.is_vehicle
+        and e.is_active
+        and (e.move_forward or e.move_backward)
+        and other.is_character
+        and not other.is_player
+      then
+        self.world:addEntity({ accident_type = 'PERSON', entity = other })
+      elseif e.is_vehicle and e.is_active and other.is_stop_sign then
         self.world:addEntity({ accident_type = 'STOP_SIGN', entity = other })
       end
       if other_push_player or player_push_other then

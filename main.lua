@@ -32,6 +32,7 @@ function love.load()
     require('systems.vehicle-interaction-system'),
     require('systems.character-input-system'),
     require('systems.character-interaction-system'),
+    require('systems.player-character-interaction-system'),
 
     require('systems.entity-movement-system'),
     require('systems.rotation-system'),

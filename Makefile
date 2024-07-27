@@ -8,6 +8,14 @@ images:
 	# carrying
 	aseprite -b --layer "feet" --layer "legs" --layer "arms-carrying" --layer "head" --frame-tag "idle" assets/player.aseprite --save-as assets/player-carrying-idle.png
 	aseprite -b --layer "feet" --layer "legs" --layer "arms-carrying" --layer "head" --frame-tag "walking" assets/player.aseprite --save-as assets/player-carrying-walking-1.png
+	# NPCS
+	aseprite -b --layer "feet" --layer "legs" --layer "arms-normal-1" --layer "head-npc-1" --frame-tag "idle" assets/player.aseprite --save-as assets/npc-1-idle.png
+	aseprite -b --layer "feet" --layer "legs" --layer "arms-normal-1" --layer "head-npc-1" --frame-tag "walking" assets/player.aseprite --save-as assets/npc-1-walking-1.png
+	aseprite -b --layer "blood" --layer "feet" --layer "legs" --layer "arms-normal-1" --layer "head-npc-1" --frame-tag "dead" assets/player.aseprite --save-as assets/npc-1-dead.png
+	aseprite -b --layer "feet" --layer "legs" --layer "arms-normal-2" --layer "head-npc-2" --frame-tag "idle" assets/player.aseprite --save-as assets/npc-2-idle.png
+	aseprite -b --layer "feet" --layer "legs" --layer "arms-normal-2" --layer "head-npc-2" --frame-tag "walking" assets/player.aseprite --save-as assets/npc-2-walking-1.png
+	aseprite -b --layer "blood" --layer "feet" --layer "legs" --layer "arms-normal-2" --layer "head-npc-2" --frame-tag "dead" assets/player.aseprite --save-as assets/npc-2-dead.png
+	# box
 	aseprite -b --layer "normal" assets/box.aseprite --save-as assets/box.png
 	aseprite -b --layer "crushed" assets/box.aseprite --save-as assets/box-crushed.png
 	aseprite -b assets/delivery-stop.aseprite --save-as assets/delivery-stop.png

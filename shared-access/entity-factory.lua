@@ -21,6 +21,26 @@ local EntityTypes = {
 }
 EntityFactory.types = EntityTypes
 
+local function random_npc_spritesheet()
+  local i = math.random(1, 2)
+  return {
+    normal_idle_sprites = {
+      love.graphics.newImage('assets/npc-' .. i .. '-idle.png'),
+    },
+    normal_walking_sprites = {
+      love.graphics.newImage('assets/npc-' .. i .. '-walking-1.png'),
+      love.graphics.newImage('assets/npc-' .. i .. '-walking-2.png'),
+      love.graphics.newImage('assets/npc-' .. i .. '-walking-3.png'),
+      love.graphics.newImage('assets/npc-' .. i .. '-walking-4.png'),
+      love.graphics.newImage('assets/npc-' .. i .. '-walking-5.png'),
+      love.graphics.newImage('assets/npc-' .. i .. '-walking-6.png'),
+      love.graphics.newImage('assets/npc-' .. i .. '-walking-7.png'),
+      love.graphics.newImage('assets/npc-' .. i .. '-walking-8.png'),
+    },
+    dead_sprite = love.graphics.newImage('assets/npc-' .. i .. '-dead.png'),
+  }
+end
+
 ---@private
 ---@type { [EntityTypes]: table }
 EntityFactory.entities = {
@@ -102,28 +122,18 @@ EntityFactory.entities = {
     can_be_repelled = false,
   },
   [EntityTypes.WALKING_NPC] = {
+    is_character = true,
     x = 0,
     y = 0,
     dx = 0,
     dy = 0,
-    sprite = love.graphics.newImage('assets/player-idle.png'),
-    animation_sprite = { love.graphics.newImage('assets/player-idle.png') },
+    sprite = love.graphics.newImage('assets/npc-1-idle.png'),
+    animation_sprite = { love.graphics.newImage('assets/npc-1-idle.png') },
     animation_time = 1,
     walking_sprites_time = 10,
     animation_loop = true,
-    normal_idle_sprites = {
-      love.graphics.newImage('assets/player-idle.png'),
-    },
-    normal_walking_sprites = {
-      love.graphics.newImage('assets/player-walking-1.png'),
-      love.graphics.newImage('assets/player-walking-2.png'),
-      love.graphics.newImage('assets/player-walking-3.png'),
-      love.graphics.newImage('assets/player-walking-4.png'),
-      love.graphics.newImage('assets/player-walking-5.png'),
-      love.graphics.newImage('assets/player-walking-6.png'),
-      love.graphics.newImage('assets/player-walking-7.png'),
-      love.graphics.newImage('assets/player-walking-8.png'),
-    },
+    normal_idle_sprites = true, -- will be randomized
+    normal_walking_sprites = true, -- wil be randomized
     origin_offset = 16,
     rotation = 0,
     friction = 0.09,
@@ -140,6 +150,7 @@ EntityFactory.entities = {
   },
   [EntityTypes.PLAYER] = {
     is_controllable = true,
+    is_character = true,
     is_player = true,
     camera_follow = true,
     x = 50,
@@ -334,6 +345,11 @@ function EntityFactory:build_single(e)
   end
   new_entity.type = e.type
   new_entity.draw_debug = true
+  if e.type == EntityTypes.WALKING_NPC then
+    for k, v in pairs(random_npc_spritesheet()) do
+      new_entity[k] = v
+    end
+  end
   return new_entity
 end
 

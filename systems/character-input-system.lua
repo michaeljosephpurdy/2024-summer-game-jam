@@ -6,10 +6,6 @@ function CharacterInputSystem:initialize(props)
 end
 
 function CharacterInputSystem:process(e, dt)
-  if self.game_state:are_controls_locked() then
-    return
-  end
-
   if not e.is_active then
     return
   end

@@ -289,11 +289,48 @@
 					"allowedRefsEntityUid": null,
 					"allowedRefTags": [],
 					"tilesetUid": null
+				},
+				{
+					"identifier": "path",
+					"doc": null,
+					"__type": "Array<Point>",
+					"uid": 14,
+					"type": "F_Point",
+					"isArray": true,
+					"canBeNull": true,
+					"arrayMinLength": null,
+					"arrayMaxLength": null,
+					"editorDisplayMode": "PointPath",
+					"editorDisplayScale": 1,
+					"editorDisplayPos": "Above",
+					"editorLinkStyle": "StraightArrow",
+					"editorDisplayColor": "#22CF22",
+					"editorAlwaysShow": false,
+					"editorShowInWorld": true,
+					"editorCutLongValues": true,
+					"editorTextSuffix": null,
+					"editorTextPrefix": null,
+					"useForSmartColor": false,
+					"exportToToc": false,
+					"searchable": false,
+					"min": null,
+					"max": null,
+					"regex": null,
+					"acceptFileTypes": null,
+					"defaultOverride": null,
+					"textLanguageMode": null,
+					"symmetricalRef": false,
+					"autoChainRef": true,
+					"allowOutOfLevelRef": true,
+					"allowedRefs": "OnlySame",
+					"allowedRefsEntityUid": null,
+					"allowedRefTags": [],
+					"tilesetUid": null
 				}
 			]
 		},
 		{
-			"identifier": "WALKING_NPC",
+			"identifier": "WalkingNPC",
 			"uid": 15,
 			"tags": [],
 			"exportToToc": false,
@@ -480,7 +517,8 @@
 									"id": "V_String",
 									"params": ["PLAYER_SPAWN"]
 								}] },
-								{ "__identifier": "rotation", "__type": "Float", "__value": 0, "__tile": null, "defUid": 10, "realEditorValues": [{ "id": "V_Float", "params": [0] }] }
+								{ "__identifier": "rotation", "__type": "Float", "__value": 0, "__tile": null, "defUid": 10, "realEditorValues": [{ "id": "V_Float", "params": [0] }] },
+								{ "__identifier": "path", "__type": "Array<Point>", "__value": [], "__tile": null, "defUid": 14, "realEditorValues": [] }
 							],
 							"__worldX": 1696,
 							"__worldY": 816
@@ -502,7 +540,8 @@
 									"id": "V_String",
 									"params": ["AMAZON_TRUCK"]
 								}] },
-								{ "__identifier": "rotation", "__type": "Float", "__value": 1.571, "__tile": null, "defUid": 10, "realEditorValues": [{ "id": "V_Float", "params": [1.5707] }] }
+								{ "__identifier": "rotation", "__type": "Float", "__value": 1.571, "__tile": null, "defUid": 10, "realEditorValues": [{ "id": "V_Float", "params": [1.5707] }] },
+								{ "__identifier": "path", "__type": "Array<Point>", "__value": [], "__tile": null, "defUid": 14, "realEditorValues": [] }
 							],
 							"__worldX": 1456,
 							"__worldY": 928
@@ -524,7 +563,8 @@
 									"id": "V_String",
 									"params": ["AMAZON_TRUCK"]
 								}] },
-								{ "__identifier": "rotation", "__type": "Float", "__value": 1.571, "__tile": null, "defUid": 10, "realEditorValues": [{ "id": "V_Float", "params": [1.5707] }] }
+								{ "__identifier": "rotation", "__type": "Float", "__value": 1.571, "__tile": null, "defUid": 10, "realEditorValues": [{ "id": "V_Float", "params": [1.5707] }] },
+								{ "__identifier": "path", "__type": "Array<Point>", "__value": [], "__tile": null, "defUid": 14, "realEditorValues": [] }
 							],
 							"__worldX": 1408,
 							"__worldY": 928
@@ -546,7 +586,8 @@
 									"id": "V_String",
 									"params": ["AMAZON_TRUCK"]
 								}] },
-								{ "__identifier": "rotation", "__type": "Float", "__value": 1.571, "__tile": null, "defUid": 10, "realEditorValues": [{ "id": "V_Float", "params": [1.5707] }] }
+								{ "__identifier": "rotation", "__type": "Float", "__value": 1.571, "__tile": null, "defUid": 10, "realEditorValues": [{ "id": "V_Float", "params": [1.5707] }] },
+								{ "__identifier": "path", "__type": "Array<Point>", "__value": [], "__tile": null, "defUid": 14, "realEditorValues": [] }
 							],
 							"__worldX": 1600,
 							"__worldY": 928
@@ -568,7 +609,8 @@
 									"id": "V_String",
 									"params": ["BOX"]
 								}] },
-								{ "__identifier": "rotation", "__type": "Float", "__value": 2.7, "__tile": null, "defUid": 10, "realEditorValues": [{ "id": "V_Float", "params": [2.7] }] }
+								{ "__identifier": "rotation", "__type": "Float", "__value": 2.7, "__tile": null, "defUid": 10, "realEditorValues": [{ "id": "V_Float", "params": [2.7] }] },
+								{ "__identifier": "path", "__type": "Array<Point>", "__value": [], "__tile": null, "defUid": 14, "realEditorValues": [] }
 							],
 							"__worldX": 1552,
 							"__worldY": 896
@@ -590,7 +632,8 @@
 									"id": "V_String",
 									"params": ["STOP_SIGN"]
 								}] },
-								{ "__identifier": "rotation", "__type": "Float", "__value": 0, "__tile": null, "defUid": 10, "realEditorValues": [] }
+								{ "__identifier": "rotation", "__type": "Float", "__value": 0, "__tile": null, "defUid": 10, "realEditorValues": [] },
+								{ "__identifier": "path", "__type": "Array<Point>", "__value": [], "__tile": null, "defUid": 14, "realEditorValues": [] }
 							],
 							"__worldX": 1328,
 							"__worldY": 912
@@ -612,7 +655,8 @@
 									"id": "V_String",
 									"params": ["DELIVERY_STOP"]
 								}] },
-								{ "__identifier": "rotation", "__type": "Float", "__value": 0, "__tile": null, "defUid": 10, "realEditorValues": [] }
+								{ "__identifier": "rotation", "__type": "Float", "__value": 0, "__tile": null, "defUid": 10, "realEditorValues": [] },
+								{ "__identifier": "path", "__type": "Array<Point>", "__value": [], "__tile": null, "defUid": 14, "realEditorValues": [] }
 							],
 							"__worldX": 1120,
 							"__worldY": 736
@@ -634,7 +678,8 @@
 									"id": "V_String",
 									"params": ["STOP_SIGN"]
 								}] },
-								{ "__identifier": "rotation", "__type": "Float", "__value": 1.571, "__tile": null, "defUid": 10, "realEditorValues": [{ "id": "V_Float", "params": [1.5707963268] }] }
+								{ "__identifier": "rotation", "__type": "Float", "__value": 1.571, "__tile": null, "defUid": 10, "realEditorValues": [{ "id": "V_Float", "params": [1.5707963268] }] },
+								{ "__identifier": "path", "__type": "Array<Point>", "__value": [], "__tile": null, "defUid": 14, "realEditorValues": [] }
 							],
 							"__worldX": 1328,
 							"__worldY": 704
@@ -656,7 +701,8 @@
 									"id": "V_String",
 									"params": ["STOP_SIGN"]
 								}] },
-								{ "__identifier": "rotation", "__type": "Float", "__value": 1.571, "__tile": null, "defUid": 10, "realEditorValues": [{ "id": "V_Float", "params": [1.5707963268] }] }
+								{ "__identifier": "rotation", "__type": "Float", "__value": 1.571, "__tile": null, "defUid": 10, "realEditorValues": [{ "id": "V_Float", "params": [1.5707963268] }] },
+								{ "__identifier": "path", "__type": "Array<Point>", "__value": [], "__tile": null, "defUid": 14, "realEditorValues": [] }
 							],
 							"__worldX": 912,
 							"__worldY": 704
@@ -678,7 +724,8 @@
 									"id": "V_String",
 									"params": ["STOP_SIGN"]
 								}] },
-								{ "__identifier": "rotation", "__type": "Float", "__value": 3.142, "__tile": null, "defUid": 10, "realEditorValues": [{ "id": "V_Float", "params": [3.1415926536] }] }
+								{ "__identifier": "rotation", "__type": "Float", "__value": 3.142, "__tile": null, "defUid": 10, "realEditorValues": [{ "id": "V_Float", "params": [3.1415926536] }] },
+								{ "__identifier": "path", "__type": "Array<Point>", "__value": [], "__tile": null, "defUid": 14, "realEditorValues": [] }
 							],
 							"__worldX": 1184,
 							"__worldY": 704
@@ -700,7 +747,8 @@
 									"id": "V_String",
 									"params": ["STOP_SIGN"]
 								}] },
-								{ "__identifier": "rotation", "__type": "Float", "__value": 3.142, "__tile": null, "defUid": 10, "realEditorValues": [{ "id": "V_Float", "params": [3.1415926536] }] }
+								{ "__identifier": "rotation", "__type": "Float", "__value": 3.142, "__tile": null, "defUid": 10, "realEditorValues": [{ "id": "V_Float", "params": [3.1415926536] }] },
+								{ "__identifier": "path", "__type": "Array<Point>", "__value": [], "__tile": null, "defUid": 14, "realEditorValues": [] }
 							],
 							"__worldX": 768,
 							"__worldY": 704
@@ -722,7 +770,8 @@
 									"id": "V_String",
 									"params": ["STOP_SIGN"]
 								}] },
-								{ "__identifier": "rotation", "__type": "Float", "__value": 4.712, "__tile": null, "defUid": 10, "realEditorValues": [{ "id": "V_Float", "params": [4.7123889804] }] }
+								{ "__identifier": "rotation", "__type": "Float", "__value": 4.712, "__tile": null, "defUid": 10, "realEditorValues": [{ "id": "V_Float", "params": [4.7123889804] }] },
+								{ "__identifier": "path", "__type": "Array<Point>", "__value": [], "__tile": null, "defUid": 14, "realEditorValues": [] }
 							],
 							"__worldX": 768,
 							"__worldY": 560
@@ -744,7 +793,8 @@
 									"id": "V_String",
 									"params": ["STOP_SIGN"]
 								}] },
-								{ "__identifier": "rotation", "__type": "Float", "__value": 4.712, "__tile": null, "defUid": 10, "realEditorValues": [{ "id": "V_Float", "params": [4.7123889804] }] }
+								{ "__identifier": "rotation", "__type": "Float", "__value": 4.712, "__tile": null, "defUid": 10, "realEditorValues": [{ "id": "V_Float", "params": [4.7123889804] }] },
+								{ "__identifier": "path", "__type": "Array<Point>", "__value": [], "__tile": null, "defUid": 14, "realEditorValues": [] }
 							],
 							"__worldX": 1184,
 							"__worldY": 560
@@ -766,7 +816,8 @@
 									"id": "V_String",
 									"params": ["STOP_SIGN"]
 								}] },
-								{ "__identifier": "rotation", "__type": "Float", "__value": 4.712, "__tile": null, "defUid": 10, "realEditorValues": [{ "id": "V_Float", "params": [4.7123889804] }] }
+								{ "__identifier": "rotation", "__type": "Float", "__value": 4.712, "__tile": null, "defUid": 10, "realEditorValues": [{ "id": "V_Float", "params": [4.7123889804] }] },
+								{ "__identifier": "path", "__type": "Array<Point>", "__value": [], "__tile": null, "defUid": 14, "realEditorValues": [] }
 							],
 							"__worldX": 768,
 							"__worldY": 912
@@ -788,7 +839,8 @@
 									"id": "V_String",
 									"params": ["BOX"]
 								}] },
-								{ "__identifier": "rotation", "__type": "Float", "__value": -2.95, "__tile": null, "defUid": 10, "realEditorValues": [{ "id": "V_Float", "params": [-2.95] }] }
+								{ "__identifier": "rotation", "__type": "Float", "__value": -2.95, "__tile": null, "defUid": 10, "realEditorValues": [{ "id": "V_Float", "params": [-2.95] }] },
+								{ "__identifier": "path", "__type": "Array<Point>", "__value": [], "__tile": null, "defUid": 14, "realEditorValues": [] }
 							],
 							"__worldX": 1488,
 							"__worldY": 896
@@ -810,7 +862,8 @@
 									"id": "V_String",
 									"params": ["BOX"]
 								}] },
-								{ "__identifier": "rotation", "__type": "Float", "__value": 3.85, "__tile": null, "defUid": 10, "realEditorValues": [{ "id": "V_Float", "params": [3.85] }] }
+								{ "__identifier": "rotation", "__type": "Float", "__value": 3.85, "__tile": null, "defUid": 10, "realEditorValues": [{ "id": "V_Float", "params": [3.85] }] },
+								{ "__identifier": "path", "__type": "Array<Point>", "__value": [], "__tile": null, "defUid": 14, "realEditorValues": [] }
 							],
 							"__worldX": 1488,
 							"__worldY": 912
@@ -832,7 +885,8 @@
 									"id": "V_String",
 									"params": ["BOX"]
 								}] },
-								{ "__identifier": "rotation", "__type": "Float", "__value": 2, "__tile": null, "defUid": 10, "realEditorValues": [{ "id": "V_Float", "params": [2] }] }
+								{ "__identifier": "rotation", "__type": "Float", "__value": 2, "__tile": null, "defUid": 10, "realEditorValues": [{ "id": "V_Float", "params": [2] }] },
+								{ "__identifier": "path", "__type": "Array<Point>", "__value": [], "__tile": null, "defUid": 14, "realEditorValues": [] }
 							],
 							"__worldX": 1504,
 							"__worldY": 880
@@ -854,7 +908,8 @@
 									"id": "V_String",
 									"params": ["BOX"]
 								}] },
-								{ "__identifier": "rotation", "__type": "Float", "__value": 0, "__tile": null, "defUid": 10, "realEditorValues": [] }
+								{ "__identifier": "rotation", "__type": "Float", "__value": 0, "__tile": null, "defUid": 10, "realEditorValues": [] },
+								{ "__identifier": "path", "__type": "Array<Point>", "__value": [], "__tile": null, "defUid": 14, "realEditorValues": [] }
 							],
 							"__worldX": 1552,
 							"__worldY": 912
@@ -876,7 +931,8 @@
 									"id": "V_String",
 									"params": ["BOX"]
 								}] },
-								{ "__identifier": "rotation", "__type": "Float", "__value": 0, "__tile": null, "defUid": 10, "realEditorValues": [] }
+								{ "__identifier": "rotation", "__type": "Float", "__value": 0, "__tile": null, "defUid": 10, "realEditorValues": [] },
+								{ "__identifier": "path", "__type": "Array<Point>", "__value": [], "__tile": null, "defUid": 14, "realEditorValues": [] }
 							],
 							"__worldX": 1504,
 							"__worldY": 896
@@ -898,7 +954,8 @@
 									"id": "V_String",
 									"params": ["BOX"]
 								}] },
-								{ "__identifier": "rotation", "__type": "Float", "__value": -0.75, "__tile": null, "defUid": 10, "realEditorValues": [{ "id": "V_Float", "params": [-0.75] }] }
+								{ "__identifier": "rotation", "__type": "Float", "__value": -0.75, "__tile": null, "defUid": 10, "realEditorValues": [{ "id": "V_Float", "params": [-0.75] }] },
+								{ "__identifier": "path", "__type": "Array<Point>", "__value": [], "__tile": null, "defUid": 14, "realEditorValues": [] }
 							],
 							"__worldX": 1536,
 							"__worldY": 928
@@ -920,7 +977,8 @@
 									"id": "V_String",
 									"params": ["BOX"]
 								}] },
-								{ "__identifier": "rotation", "__type": "Float", "__value": 0, "__tile": null, "defUid": 10, "realEditorValues": [] }
+								{ "__identifier": "rotation", "__type": "Float", "__value": 0, "__tile": null, "defUid": 10, "realEditorValues": [] },
+								{ "__identifier": "path", "__type": "Array<Point>", "__value": [], "__tile": null, "defUid": 14, "realEditorValues": [] }
 							],
 							"__worldX": 1488,
 							"__worldY": 928
@@ -942,7 +1000,8 @@
 									"id": "V_String",
 									"params": ["DELIVERY_STOP"]
 								}] },
-								{ "__identifier": "rotation", "__type": "Float", "__value": 0, "__tile": null, "defUid": 10, "realEditorValues": [] }
+								{ "__identifier": "rotation", "__type": "Float", "__value": 0, "__tile": null, "defUid": 10, "realEditorValues": [] },
+								{ "__identifier": "path", "__type": "Array<Point>", "__value": [], "__tile": null, "defUid": 14, "realEditorValues": [] }
 							],
 							"__worldX": 720,
 							"__worldY": 1088
@@ -964,7 +1023,8 @@
 									"id": "V_String",
 									"params": ["DELIVERY_STOP"]
 								}] },
-								{ "__identifier": "rotation", "__type": "Float", "__value": 0, "__tile": null, "defUid": 10, "realEditorValues": [] }
+								{ "__identifier": "rotation", "__type": "Float", "__value": 0, "__tile": null, "defUid": 10, "realEditorValues": [] },
+								{ "__identifier": "path", "__type": "Array<Point>", "__value": [], "__tile": null, "defUid": 14, "realEditorValues": [] }
 							],
 							"__worldX": 704,
 							"__worldY": 464
@@ -986,7 +1046,8 @@
 									"id": "V_String",
 									"params": ["DELIVERY_STOP"]
 								}] },
-								{ "__identifier": "rotation", "__type": "Float", "__value": 0, "__tile": null, "defUid": 10, "realEditorValues": [] }
+								{ "__identifier": "rotation", "__type": "Float", "__value": 0, "__tile": null, "defUid": 10, "realEditorValues": [] },
+								{ "__identifier": "path", "__type": "Array<Point>", "__value": [], "__tile": null, "defUid": 14, "realEditorValues": [] }
 							],
 							"__worldX": 1440,
 							"__worldY": 400
@@ -1008,7 +1069,8 @@
 									"id": "V_String",
 									"params": ["DELIVERY_STOP"]
 								}] },
-								{ "__identifier": "rotation", "__type": "Float", "__value": 0, "__tile": null, "defUid": 10, "realEditorValues": [] }
+								{ "__identifier": "rotation", "__type": "Float", "__value": 0, "__tile": null, "defUid": 10, "realEditorValues": [] },
+								{ "__identifier": "path", "__type": "Array<Point>", "__value": [], "__tile": null, "defUid": 14, "realEditorValues": [] }
 							],
 							"__worldX": 400,
 							"__worldY": 848
@@ -1030,7 +1092,8 @@
 									"id": "V_String",
 									"params": ["DELIVERY_STOP"]
 								}] },
-								{ "__identifier": "rotation", "__type": "Float", "__value": 0, "__tile": null, "defUid": 10, "realEditorValues": [] }
+								{ "__identifier": "rotation", "__type": "Float", "__value": 0, "__tile": null, "defUid": 10, "realEditorValues": [] },
+								{ "__identifier": "path", "__type": "Array<Point>", "__value": [], "__tile": null, "defUid": 14, "realEditorValues": [] }
 							],
 							"__worldX": 736,
 							"__worldY": 288
@@ -1052,7 +1115,8 @@
 									"id": "V_String",
 									"params": ["DELIVERY_STOP"]
 								}] },
-								{ "__identifier": "rotation", "__type": "Float", "__value": 0, "__tile": null, "defUid": 10, "realEditorValues": [] }
+								{ "__identifier": "rotation", "__type": "Float", "__value": 0, "__tile": null, "defUid": 10, "realEditorValues": [] },
+								{ "__identifier": "path", "__type": "Array<Point>", "__value": [], "__tile": null, "defUid": 14, "realEditorValues": [] }
 							],
 							"__worldX": 944,
 							"__worldY": 288
@@ -1074,7 +1138,8 @@
 									"id": "V_String",
 									"params": ["DELIVERY_STOP"]
 								}] },
-								{ "__identifier": "rotation", "__type": "Float", "__value": 0, "__tile": null, "defUid": 10, "realEditorValues": [] }
+								{ "__identifier": "rotation", "__type": "Float", "__value": 0, "__tile": null, "defUid": 10, "realEditorValues": [] },
+								{ "__identifier": "path", "__type": "Array<Point>", "__value": [], "__tile": null, "defUid": 14, "realEditorValues": [] }
 							],
 							"__worldX": 1168,
 							"__worldY": 288
@@ -1096,7 +1161,8 @@
 									"id": "V_String",
 									"params": ["DELIVERY_STOP"]
 								}] },
-								{ "__identifier": "rotation", "__type": "Float", "__value": 0, "__tile": null, "defUid": 10, "realEditorValues": [] }
+								{ "__identifier": "rotation", "__type": "Float", "__value": 0, "__tile": null, "defUid": 10, "realEditorValues": [] },
+								{ "__identifier": "path", "__type": "Array<Point>", "__value": [], "__tile": null, "defUid": 14, "realEditorValues": [] }
 							],
 							"__worldX": 928,
 							"__worldY": 512
@@ -1118,7 +1184,8 @@
 									"id": "V_String",
 									"params": ["DELIVERY_STOP"]
 								}] },
-								{ "__identifier": "rotation", "__type": "Float", "__value": 0, "__tile": null, "defUid": 10, "realEditorValues": [] }
+								{ "__identifier": "rotation", "__type": "Float", "__value": 0, "__tile": null, "defUid": 10, "realEditorValues": [] },
+								{ "__identifier": "path", "__type": "Array<Point>", "__value": [], "__tile": null, "defUid": 14, "realEditorValues": [] }
 							],
 							"__worldX": 1120,
 							"__worldY": 464
@@ -1140,7 +1207,8 @@
 									"id": "V_String",
 									"params": ["DELIVERY_STOP"]
 								}] },
-								{ "__identifier": "rotation", "__type": "Float", "__value": 0, "__tile": null, "defUid": 10, "realEditorValues": [] }
+								{ "__identifier": "rotation", "__type": "Float", "__value": 0, "__tile": null, "defUid": 10, "realEditorValues": [] },
+								{ "__identifier": "path", "__type": "Array<Point>", "__value": [], "__tile": null, "defUid": 14, "realEditorValues": [] }
 							],
 							"__worldX": 352,
 							"__worldY": 640
@@ -1162,7 +1230,8 @@
 									"id": "V_String",
 									"params": ["DELIVERY_STOP"]
 								}] },
-								{ "__identifier": "rotation", "__type": "Float", "__value": 0, "__tile": null, "defUid": 10, "realEditorValues": [] }
+								{ "__identifier": "rotation", "__type": "Float", "__value": 0, "__tile": null, "defUid": 10, "realEditorValues": [] },
+								{ "__identifier": "path", "__type": "Array<Point>", "__value": [], "__tile": null, "defUid": 14, "realEditorValues": [] }
 							],
 							"__worldX": 640,
 							"__worldY": 864
@@ -1184,7 +1253,8 @@
 									"id": "V_String",
 									"params": ["DELIVERY_STOP"]
 								}] },
-								{ "__identifier": "rotation", "__type": "Float", "__value": 0, "__tile": null, "defUid": 10, "realEditorValues": [] }
+								{ "__identifier": "rotation", "__type": "Float", "__value": 0, "__tile": null, "defUid": 10, "realEditorValues": [] },
+								{ "__identifier": "path", "__type": "Array<Point>", "__value": [], "__tile": null, "defUid": 14, "realEditorValues": [] }
 							],
 							"__worldX": 400,
 							"__worldY": 1120
@@ -1206,7 +1276,8 @@
 									"id": "V_String",
 									"params": ["DELIVERY_STOP"]
 								}] },
-								{ "__identifier": "rotation", "__type": "Float", "__value": 0, "__tile": null, "defUid": 10, "realEditorValues": [] }
+								{ "__identifier": "rotation", "__type": "Float", "__value": 0, "__tile": null, "defUid": 10, "realEditorValues": [] },
+								{ "__identifier": "path", "__type": "Array<Point>", "__value": [], "__tile": null, "defUid": 14, "realEditorValues": [] }
 							],
 							"__worldX": 1056,
 							"__worldY": 992
@@ -1228,7 +1299,8 @@
 									"id": "V_String",
 									"params": ["DELIVERY_STOP"]
 								}] },
-								{ "__identifier": "rotation", "__type": "Float", "__value": 0, "__tile": null, "defUid": 10, "realEditorValues": [] }
+								{ "__identifier": "rotation", "__type": "Float", "__value": 0, "__tile": null, "defUid": 10, "realEditorValues": [] },
+								{ "__identifier": "path", "__type": "Array<Point>", "__value": [], "__tile": null, "defUid": 14, "realEditorValues": [] }
 							],
 							"__worldX": 960,
 							"__worldY": 864
@@ -1250,7 +1322,8 @@
 									"id": "V_String",
 									"params": ["DELIVERY_STOP"]
 								}] },
-								{ "__identifier": "rotation", "__type": "Float", "__value": 0, "__tile": null, "defUid": 10, "realEditorValues": [] }
+								{ "__identifier": "rotation", "__type": "Float", "__value": 0, "__tile": null, "defUid": 10, "realEditorValues": [] },
+								{ "__identifier": "path", "__type": "Array<Point>", "__value": [], "__tile": null, "defUid": 14, "realEditorValues": [] }
 							],
 							"__worldX": 912,
 							"__worldY": 1072
@@ -1272,7 +1345,8 @@
 									"id": "V_String",
 									"params": ["DELIVERY_STOP"]
 								}] },
-								{ "__identifier": "rotation", "__type": "Float", "__value": 0, "__tile": null, "defUid": 10, "realEditorValues": [] }
+								{ "__identifier": "rotation", "__type": "Float", "__value": 0, "__tile": null, "defUid": 10, "realEditorValues": [] },
+								{ "__identifier": "path", "__type": "Array<Point>", "__value": [], "__tile": null, "defUid": 14, "realEditorValues": [] }
 							],
 							"__worldX": 1648,
 							"__worldY": 592
@@ -1294,7 +1368,8 @@
 									"id": "V_String",
 									"params": ["BOX"]
 								}] },
-								{ "__identifier": "rotation", "__type": "Float", "__value": 0, "__tile": null, "defUid": 10, "realEditorValues": [] }
+								{ "__identifier": "rotation", "__type": "Float", "__value": 0, "__tile": null, "defUid": 10, "realEditorValues": [] },
+								{ "__identifier": "path", "__type": "Array<Point>", "__value": [], "__tile": null, "defUid": 14, "realEditorValues": [] }
 							],
 							"__worldX": 1504,
 							"__worldY": 928
@@ -1316,7 +1391,8 @@
 									"id": "V_String",
 									"params": ["BOX"]
 								}] },
-								{ "__identifier": "rotation", "__type": "Float", "__value": 0.7, "__tile": null, "defUid": 10, "realEditorValues": [{ "id": "V_Float", "params": [0.7] }] }
+								{ "__identifier": "rotation", "__type": "Float", "__value": 0.7, "__tile": null, "defUid": 10, "realEditorValues": [{ "id": "V_Float", "params": [0.7] }] },
+								{ "__identifier": "path", "__type": "Array<Point>", "__value": [], "__tile": null, "defUid": 14, "realEditorValues": [] }
 							],
 							"__worldX": 1520,
 							"__worldY": 912
@@ -1338,7 +1414,8 @@
 									"id": "V_String",
 									"params": ["BOX"]
 								}] },
-								{ "__identifier": "rotation", "__type": "Float", "__value": -1.1, "__tile": null, "defUid": 10, "realEditorValues": [{ "id": "V_Float", "params": [-1.1] }] }
+								{ "__identifier": "rotation", "__type": "Float", "__value": -1.1, "__tile": null, "defUid": 10, "realEditorValues": [{ "id": "V_Float", "params": [-1.1] }] },
+								{ "__identifier": "path", "__type": "Array<Point>", "__value": [], "__tile": null, "defUid": 14, "realEditorValues": [] }
 							],
 							"__worldX": 1504,
 							"__worldY": 912
@@ -1360,7 +1437,8 @@
 									"id": "V_String",
 									"params": ["BOX"]
 								}] },
-								{ "__identifier": "rotation", "__type": "Float", "__value": 0, "__tile": null, "defUid": 10, "realEditorValues": [] }
+								{ "__identifier": "rotation", "__type": "Float", "__value": 0, "__tile": null, "defUid": 10, "realEditorValues": [] },
+								{ "__identifier": "path", "__type": "Array<Point>", "__value": [], "__tile": null, "defUid": 14, "realEditorValues": [] }
 							],
 							"__worldX": 1520,
 							"__worldY": 928
@@ -1382,7 +1460,8 @@
 									"id": "V_String",
 									"params": ["BOX"]
 								}] },
-								{ "__identifier": "rotation", "__type": "Float", "__value": 0, "__tile": null, "defUid": 10, "realEditorValues": [] }
+								{ "__identifier": "rotation", "__type": "Float", "__value": 0, "__tile": null, "defUid": 10, "realEditorValues": [] },
+								{ "__identifier": "path", "__type": "Array<Point>", "__value": [], "__tile": null, "defUid": 14, "realEditorValues": [] }
 							],
 							"__worldX": 1536,
 							"__worldY": 912
@@ -1404,7 +1483,8 @@
 									"id": "V_String",
 									"params": ["BOX"]
 								}] },
-								{ "__identifier": "rotation", "__type": "Float", "__value": 0.6, "__tile": null, "defUid": 10, "realEditorValues": [{ "id": "V_Float", "params": [0.6] }] }
+								{ "__identifier": "rotation", "__type": "Float", "__value": 0.6, "__tile": null, "defUid": 10, "realEditorValues": [{ "id": "V_Float", "params": [0.6] }] },
+								{ "__identifier": "path", "__type": "Array<Point>", "__value": [], "__tile": null, "defUid": 14, "realEditorValues": [] }
 							],
 							"__worldX": 1536,
 							"__worldY": 896
@@ -1426,7 +1506,8 @@
 									"id": "V_String",
 									"params": ["BOX"]
 								}] },
-								{ "__identifier": "rotation", "__type": "Float", "__value": 0, "__tile": null, "defUid": 10, "realEditorValues": [] }
+								{ "__identifier": "rotation", "__type": "Float", "__value": 0, "__tile": null, "defUid": 10, "realEditorValues": [] },
+								{ "__identifier": "path", "__type": "Array<Point>", "__value": [], "__tile": null, "defUid": 14, "realEditorValues": [] }
 							],
 							"__worldX": 1520,
 							"__worldY": 944
@@ -1448,7 +1529,8 @@
 									"id": "V_String",
 									"params": ["BOX"]
 								}] },
-								{ "__identifier": "rotation", "__type": "Float", "__value": 0.55, "__tile": null, "defUid": 10, "realEditorValues": [{ "id": "V_Float", "params": [0.55] }] }
+								{ "__identifier": "rotation", "__type": "Float", "__value": 0.55, "__tile": null, "defUid": 10, "realEditorValues": [{ "id": "V_Float", "params": [0.55] }] },
+								{ "__identifier": "path", "__type": "Array<Point>", "__value": [], "__tile": null, "defUid": 14, "realEditorValues": [] }
 							],
 							"__worldX": 1504,
 							"__worldY": 944
@@ -1470,243 +1552,42 @@
 									"id": "V_String",
 									"params": ["BOX"]
 								}] },
-								{ "__identifier": "rotation", "__type": "Float", "__value": -0.15, "__tile": null, "defUid": 10, "realEditorValues": [{ "id": "V_Float", "params": [-0.15] }] }
+								{ "__identifier": "rotation", "__type": "Float", "__value": -0.15, "__tile": null, "defUid": 10, "realEditorValues": [{ "id": "V_Float", "params": [-0.15] }] },
+								{ "__identifier": "path", "__type": "Array<Point>", "__value": [], "__tile": null, "defUid": 14, "realEditorValues": [] }
 							],
 							"__worldX": 1520,
 							"__worldY": 896
 						},
 						{
-							"__identifier": "WALKING_NPC",
-							"__grid": [60,14],
+							"__identifier": "Entity",
+							"__grid": [102,43],
 							"__pivot": [0,0],
 							"__tags": [],
 							"__tile": null,
-							"__smartColor": "#000000",
-							"iid": "832ea0b0-25d0-11ef-96f6-d537f9ca2c99",
+							"__smartColor": "#676767",
+							"iid": "f9d6d3b0-25d0-11ef-9316-43aff76427e5",
 							"width": 16,
 							"height": 16,
-							"defUid": 15,
-							"px": [960,224],
-							"fieldInstances": [{ "__identifier": "path", "__type": "Array<Point>", "__value": [
-								{ "cx": 77, "cy": 16 },
-								{ "cx": 77, "cy": 31 },
-								{ "cx": 44, "cy": 31 },
-								{ "cx": 44, "cy": 16 },
-								{ "cx": 77, "cy": 16 }
-							], "__tile": null, "defUid": 16, "realEditorValues": [
-								{
+							"defUid": 6,
+							"px": [1632,688],
+							"fieldInstances": [
+								{ "__identifier": "type", "__type": "LocalEnum.EntityTypes", "__value": null, "__tile": null, "defUid": 9, "realEditorValues": [null] },
+								{ "__identifier": "rotation", "__type": "Float", "__value": 0, "__tile": null, "defUid": 10, "realEditorValues": [] },
+								{ "__identifier": "path", "__type": "Array<Point>", "__value": [ { "cx": 104, "cy": 43 }, { "cx": 104, "cy": 51 }, { "cx": 101, "cy": 51 }, { "cx": 101, "cy": 43 } ], "__tile": null, "defUid": 14, "realEditorValues": [ {
 									"id": "V_String",
-									"params": ["77,16"]
-								},
-								{
+									"params": ["104,43"]
+								}, {
 									"id": "V_String",
-									"params": ["77,31"]
-								},
-								{
+									"params": ["104,51"]
+								}, {
 									"id": "V_String",
-									"params": ["44,31"]
-								},
-								{
+									"params": ["101,51"]
+								}, {
 									"id": "V_String",
-									"params": ["44,16"]
-								},
-								{
-									"id": "V_String",
-									"params": ["77,16"]
-								}
-							] }],
-							"__worldX": 1040,
-							"__worldY": 304
-						},
-						{
-							"__identifier": "WALKING_NPC",
-							"__grid": [24,34],
-							"__pivot": [0,0],
-							"__tags": [],
-							"__tile": null,
-							"__smartColor": "#000000",
-							"iid": "031208f0-25d0-11ef-96f6-7f836f087854",
-							"width": 16,
-							"height": 16,
-							"defUid": 15,
-							"px": [384,544],
-							"fieldInstances": [{ "__identifier": "path", "__type": "Array<Point>", "__value": [
-								{ "cx": 24, "cy": 31 },
-								{ "cx": 26, "cy": 29 },
-								{ "cx": 30, "cy": 29 },
-								{ "cx": 32, "cy": 31 },
-								{ "cx": 43, "cy": 31 },
-								{ "cx": 44, "cy": 31 },
-								{ "cx": 44, "cy": 23 },
-								{ "cx": 51, "cy": 23 },
-								{ "cx": 51, "cy": 31 },
-								{ "cx": 51, "cy": 38 },
-								{ "cx": 51, "cy": 53 },
-								{ "cx": 44, "cy": 53 },
-								{ "cx": 44, "cy": 38 },
-								{ "cx": 31, "cy": 38 },
-								{ "cx": 29, "cy": 40 },
-								{ "cx": 25, "cy": 38 },
-								{ "cx": 24, "cy": 35 },
-								{ "cx": 24, "cy": 31 }
-							], "__tile": null, "defUid": 16, "realEditorValues": [
-								{
-									"id": "V_String",
-									"params": ["24,31"]
-								},
-								{
-									"id": "V_String",
-									"params": ["26,29"]
-								},
-								{
-									"id": "V_String",
-									"params": ["30,29"]
-								},
-								{
-									"id": "V_String",
-									"params": ["32,31"]
-								},
-								{
-									"id": "V_String",
-									"params": ["43,31"]
-								},
-								{
-									"id": "V_String",
-									"params": ["44,31"]
-								},
-								{
-									"id": "V_String",
-									"params": ["44,23"]
-								},
-								{
-									"id": "V_String",
-									"params": ["51,23"]
-								},
-								{
-									"id": "V_String",
-									"params": ["51,31"]
-								},
-								{
-									"id": "V_String",
-									"params": ["51,38"]
-								},
-								{
-									"id": "V_String",
-									"params": ["51,53"]
-								},
-								{
-									"id": "V_String",
-									"params": ["44,53"]
-								},
-								{
-									"id": "V_String",
-									"params": ["44,38"]
-								},
-								{
-									"id": "V_String",
-									"params": ["31,38"]
-								},
-								{
-									"id": "V_String",
-									"params": ["29,40"]
-								},
-								{
-									"id": "V_String",
-									"params": ["25,38"]
-								},
-								{
-									"id": "V_String",
-									"params": ["24,35"]
-								},
-								{
-									"id": "V_String",
-									"params": ["24,31"]
-								}
-							] }],
-							"__worldX": 464,
-							"__worldY": 624
-						},
-						{
-							"__identifier": "WALKING_NPC",
-							"__grid": [79,43],
-							"__pivot": [0,0],
-							"__tags": [],
-							"__tile": null,
-							"__smartColor": "#000000",
-							"iid": "1cc15a30-25d0-11ef-96f6-27ea985f961f",
-							"width": 16,
-							"height": 16,
-							"defUid": 15,
-							"px": [1264,688],
-							"fieldInstances": [{ "__identifier": "path", "__type": "Array<Point>", "__value": [
-								{ "cx": 77, "cy": 43 },
-								{ "cx": 77, "cy": 16 },
-								{ "cx": 60, "cy": 16 },
-								{ "cx": 60, "cy": 23 },
-								{ "cx": 70, "cy": 23 },
-								{ "cx": 70, "cy": 31 },
-								{ "cx": 70, "cy": 38 },
-								{ "cx": 70, "cy": 49 },
-								{ "cx": 70, "cy": 57 },
-								{ "cx": 70, "cy": 58 },
-								{ "cx": 73, "cy": 60 },
-								{ "cx": 77, "cy": 60 },
-								{ "cx": 77, "cy": 43 }
-							], "__tile": null, "defUid": 16, "realEditorValues": [
-								{
-									"id": "V_String",
-									"params": ["77,43"]
-								},
-								{
-									"id": "V_String",
-									"params": ["77,16"]
-								},
-								{
-									"id": "V_String",
-									"params": ["60,16"]
-								},
-								{
-									"id": "V_String",
-									"params": ["60,23"]
-								},
-								{
-									"id": "V_String",
-									"params": ["70,23"]
-								},
-								{
-									"id": "V_String",
-									"params": ["70,31"]
-								},
-								{
-									"id": "V_String",
-									"params": ["70,38"]
-								},
-								{
-									"id": "V_String",
-									"params": ["70,49"]
-								},
-								{
-									"id": "V_String",
-									"params": ["70,57"]
-								},
-								{
-									"id": "V_String",
-									"params": ["70,58"]
-								},
-								{
-									"id": "V_String",
-									"params": ["73,60"]
-								},
-								{
-									"id": "V_String",
-									"params": ["77,60"]
-								},
-								{
-									"id": "V_String",
-									"params": ["77,43"]
-								}
-							] }],
-							"__worldX": 1344,
+									"params": ["101,43"]
+								} ] }
+							],
+							"__worldX": 1712,
 							"__worldY": 768
 						}
 					]

@@ -3,7 +3,7 @@ local rejection_filter = tiny.rejectAny('is_solid', 'is_tile')
 EntityMovementSystem.filter = tiny.requireAll(rejection_filter, 'x', 'y', 'dx', 'dy', 'speed')
 
 function EntityMovementSystem:onAdd(e)
-  e.current_max_speed = e.current_max_speed
+  e.current_max_speed = e.max_speed
 end
 
 function EntityMovementSystem:process(e, dt)
