@@ -64,11 +64,11 @@ function CollisionDetectionSystem:process(e, dt)
       elseif e.is_player and other.is_truck_back_door then
         e.nearest_back_door = other
         other.trigger.near_player = true
-      elseif e.is_truck and other.is_truck then
+      elseif e.is_vehicle and other.is_vehicle then
         e.speed = 0
-      elseif e.is_truck and e.is_active and other.is_box and other.on_ground then
+      elseif e.is_vehicle and e.is_active and other.is_box and other.on_ground then
         self.world:addEntity({ accident_type = 'BOX', entity = other })
-      elseif e.is_truck and other.is_stop_sign then
+      elseif e.is_vehicle and other.is_stop_sign then
         self.world:addEntity({ accident_type = 'STOP_SIGN', entity = other })
       end
       if other_push_player or player_push_other then

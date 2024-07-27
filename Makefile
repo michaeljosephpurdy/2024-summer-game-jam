@@ -11,6 +11,11 @@ images:
 	aseprite -b --layer "normal" assets/box.aseprite --save-as assets/box.png
 	aseprite -b --layer "crushed" assets/box.aseprite --save-as assets/box-crushed.png
 	aseprite -b assets/delivery-stop.aseprite --save-as assets/delivery-stop.png
+	# car
+	aseprite -b --layer "normal" assets/car.aseprite --save-as assets/car-normal.png
+	aseprite -b --layer "trunk-open" assets/car.aseprite --save-as assets/car-open-trunk.png
+	aseprite -b --layer "passenger-door-open" assets/car.aseprite --save-as assets/car-open-passenger.png
+	aseprite -b --layer "driver-door-open" assets/car.aseprite --save-as assets/car-open-driver.png
 	# truck
 	aseprite -b --layer "normal" assets/player-truck.aseprite --save-as assets/player-truck-normal.png
 	aseprite -b --layer "trunk-open" assets/player-truck.aseprite --save-as assets/player-truck-open-trunk.png
