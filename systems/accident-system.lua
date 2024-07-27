@@ -10,6 +10,12 @@ function AccidentSystem:onAdd(e)
   if e.entity.accident_recorded then
     return
   end
+  -- TODO: There is likely a better place to put this logic
+  if e.entity.triggered_by then
+    for _, trigger in pairs(e.entity.triggered_by) do
+      self.world:removeEntity(trigger)
+    end
+  end
   e.entity.accident_recorded = true
   self.game_state:record_accident()
   local publish_message = true

@@ -11,6 +11,7 @@ function CollisionDetectionSystem:process(e, dt)
   e.nearest_vehicle = nil
   e.nearest_box = nil
   e.nearest_back_door = nil
+  e.nearest_delivery_stop = nil
   local future_x = e.x + (e.dx * e.speed * dt)
   local future_y = e.y + (e.dy * e.speed * dt)
   -- first, we'll check horizontal collisions
@@ -34,16 +35,15 @@ function CollisionDetectionSystem:process(e, dt)
   -- third, we'll check all surrounding collisions
   local collisions = self.collision_grid:query(future_x, future_y)
   for _, other in pairs(collisions) do
-    local debug_rect = self.collision_grid:get_rect(other)
-    --debug_rect.draw_debug = true
-    debug_rect.time_to_live = 0
-    self.world:addEntity(debug_rect)
     local max_distance = e.collision_radius + other.collision_radius
     local distance_squared = ((other.x - future_x) * (other.x - future_x))
       + ((other.y - future_y) * (other.y - future_y))
     local overlaps = distance_squared <= max_distance * max_distance
 
     if overlaps then
+      if e.is_player and other.is_trigger then
+        other.triggered = true
+      end
       local other_push_player = other.can_repel
       local player_push_other = other.can_be_repelled
       local power_from_other = other.repel_force
@@ -54,17 +54,21 @@ function CollisionDetectionSystem:process(e, dt)
       elseif other.is_solid then
         other_push_player = false
         player_push_other = false
+      elseif e.is_player and other.is_delivery_stop then
+        e.nearest_delivery_stop = other
       elseif e.is_player and other.is_trigger and other.is_vehicle_door then
         e.nearest_vehicle = other.trigger
+        other.trigger.near_player = true
       elseif e.is_player and other.is_trigger and other.trigger.is_box then
         e.nearest_box = other.trigger
       elseif e.is_player and other.is_truck_back_door then
         e.nearest_back_door = other
-      elseif e.is_truck and other.is_truck then
+        other.trigger.near_player = true
+      elseif e.is_vehicle and other.is_vehicle then
         e.speed = 0
-      elseif e.is_truck and e.is_active and other.is_box and other.on_ground then
+      elseif e.is_vehicle and e.is_active and other.is_box and other.on_ground then
         self.world:addEntity({ accident_type = 'BOX', entity = other })
-      elseif e.is_truck and other.is_stop_sign then
+      elseif e.is_vehicle and other.is_stop_sign then
         self.world:addEntity({ accident_type = 'STOP_SIGN', entity = other })
       end
       if other_push_player or player_push_other then

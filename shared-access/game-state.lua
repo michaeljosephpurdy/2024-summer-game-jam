@@ -8,12 +8,17 @@ function GameState:initialize()
   self.money = 0
   self.delivered = 0
 
+  self.display_truck_states = false
+  self.current_truck_box_count = ''
+
   self.delivery_direction = ''
   self.accidents = 0
   self.last_accident = 0
   self.current_destination = nil
   self.boxes = {}
   self.stops = {}
+  self.stops_without_boxes = {}
+  self.boxes_without_stops = {}
   self.controls_locked = false
   self.stop_sign_count = 0
 
@@ -21,18 +26,6 @@ function GameState:initialize()
   self.minutes = 0
   self.hours = 9
   self.real_seconds_to_game_seconds = 10
-end
-
-local function find_random(tbl, filter)
-  local found = {}
-  local length = 0
-  for _, item in pairs(tbl) do
-    length = length + 1
-    if filter(item) then
-      table.insert(found, item)
-    end
-  end
-  return found[math.floor((math.random() * length)) + 1]
 end
 
 function GameState:find_delivery_stop(box)
@@ -44,35 +37,33 @@ function GameState:find_delivery_stop(box)
 end
 
 function GameState:add_delivery_stop(stop)
-  table.insert(self.stops, stop)
   if stop.linked then
+    assert(nil, 'stop already has a box')
     return
   end
-  local box = find_random(self.boxes, function(box)
-    return box.linked ~= stop
-  end)
+  table.insert(self.stops, stop)
+  local box = table.remove(self.boxes_without_stops, math.floor((math.random() * #self.boxes_without_stops)) + 1)
   if not box then
+    table.insert(self.stops_without_boxes, stop)
     return
   end
   box.linked = stop
   stop.linked = box
-  print('delivery stops: ' .. #self.stops)
 end
 
 function GameState:add_box(box)
-  table.insert(self.boxes, box)
   if box.linked then
+    assert(nil, 'box already has a stop')
     return
   end
-  local stop = find_random(self.stops, function(stop)
-    return stop.linked ~= box
-  end)
+  table.insert(self.boxes, box)
+  local stop = table.remove(self.stops_without_boxes, math.floor((math.random() * #self.stops_without_boxes)) + 1)
   if not stop then
+    table.insert(self.boxes_without_stops, box)
     return
   end
   box.linked = stop
   stop.linked = box
-  print('boxes: ' .. #self.boxes)
 end
 
 function GameState:mark_box_as_current(current_box)
@@ -93,7 +84,6 @@ end
 
 function GameState:increment_delivered()
   self.delivered = self.delivered + 1
-  print('delieverd is now ' .. self.delivered)
   self.delivery_direction = ''
   self.money = self.money + 5
   self.current_destination = nil

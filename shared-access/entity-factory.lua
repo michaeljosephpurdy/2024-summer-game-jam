@@ -59,6 +59,7 @@ EntityFactory.entities = {
     rotation = 0,
     collision_radius = 16,
     is_truck_back_door = true,
+    is_trigger = true,
     revolve_around = true,
     pivot_offset = math.rad(-180),
     origin_offset = 32,
@@ -162,7 +163,11 @@ EntityFactory.entities = {
     y = 50,
     dx = 0,
     dy = 0,
-    sprite = love.graphics.newImage('assets/player-truck.png'),
+    sprite = love.graphics.newImage('assets/player-truck-normal.png'),
+    normal_sprite = love.graphics.newImage('assets/player-truck-normal.png'),
+    driver_door_open_sprite = love.graphics.newImage('assets/player-truck-open-driver.png'),
+    passenger_door_open_sprite = love.graphics.newImage('assets/player-truck-open-passenger.png'),
+    trunk_door_open_sprite = love.graphics.newImage('assets/player-truck-open-trunk.png'),
     origin_offset = 32,
     rotation = 0,
     friction = 0.9,
@@ -221,16 +226,25 @@ function EntityFactory:build(e)
       pivot_point = entity,
       trigger = entity,
     })
+    entity.triggered_by = { collider }
     return { entity, collider }
   end
   -- if it's a vehicle, we need to add the door
   if entity.is_vehicle then
-    local door = self:build_single({
+    local driver_door = self:build_single({
       x = entity.x,
       y = entity.y,
       rotation = entity.rotation,
       type = 'VEHICLE_DOOR',
       trigger = entity,
+    })
+    local passenger_door = self:build_single({
+      x = entity.x,
+      y = entity.y,
+      rotation = entity.rotation,
+      type = 'VEHICLE_DOOR',
+      trigger = entity,
+      pivot_offset = math.rad(90),
     })
     local back_door = self:build_single({
       x = entity.x,
@@ -239,37 +253,17 @@ function EntityFactory:build(e)
       type = 'TRUCK_BACK_DOOR',
       trigger = entity,
     })
-    door.pivot_point = entity
+    entity.triggered_by = { driver_door, passenger_door, back_door }
+    driver_door.pivot_point = entity
+    passenger_door.pivot_point = entity
     back_door.pivot_point = entity
-    entity.door = door
+    entity.driver_door = driver_door
+    entity.passenger_door = passenger_door
     entity.back_door = back_door
-    door.vehicle = entity
+    driver_door.vehicle = entity
+    passenger_door.vehicle = entity
     back_door.vehicle = entity
-    door.colliders = {} -- add colliders for truck
-    if entity.type ~= 'AMAZON_TRUCK' then
-      local front_collider = self:build_single({
-        rotation = 0,
-        collision_radius = 16,
-        revolve_around = true,
-        pivot_offset = math.rad(-90),
-        origin_offset = 16,
-        draw_debug = true,
-        type = 'INVISIBLE_COLLIDER',
-        pivot_point = entity,
-      })
-      local rear_collider = self:build_single({
-        rotation = 0,
-        collision_radius = 16,
-        revolve_around = true,
-        pivot_offset = math.rad(-90),
-        origin_offset = 16,
-        draw_debug = true,
-        type = 'INVISIBLE_COLLIDER',
-        pivot_point = entity,
-      })
-      return { entity, door, back_door }
-    end
-    return { entity, door, back_door }
+    return { entity, driver_door, passenger_door, back_door }
   end
   return { entity }
 end

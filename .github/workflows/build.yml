@@ -1,5 +1,9 @@
-name: continuous-integration
-on: [push]
+name: build-and-itch-deploy
+on: 
+  push:
+    branches:
+      - main
+
 env:
   GAME_NAME: 2024-summer-game-jam
   # unfortunately we need to also hardcode game name here in env since definitions in env can't reference eachother
