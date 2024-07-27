@@ -7,6 +7,9 @@ function FrictionSystem:process(e, dt)
   e.dx, e.dy = (e.dx or 0) * friction, (e.dy or 0) * friction
   e.repel_force_dx = (e.repel_force_dx or 0) * friction
   e.repel_force_dy = (e.repel_force_dy or 0) * friction
+  if not e.move_forward and not e.move_backward then
+    e.speed = (e.speed or 0) * friction
+  end
 end
 
 return FrictionSystem

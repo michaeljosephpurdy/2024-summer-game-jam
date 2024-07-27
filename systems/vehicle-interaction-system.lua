@@ -8,8 +8,8 @@ end
 function VehicleInteractionSystem:process(e, _)
   self.game_state.current_truck_box_count = ''
   self.game_state.display_truck_states = false
+  e.sprite = e.normal_sprite
   if e.is_active then
-    e.sprite = e.normal_sprite
     self.game_state.current_truck_box_count = tostring(e.box_count) .. '/' .. tostring(e.max_boxes)
     self.game_state.display_truck_states = true
   elseif e.driver_door.triggered then
@@ -25,8 +25,6 @@ function VehicleInteractionSystem:process(e, _)
       y = e.y,
       time_to_live = 0,
     })
-  else
-    e.sprite = e.normal_sprite
   end
 end
 

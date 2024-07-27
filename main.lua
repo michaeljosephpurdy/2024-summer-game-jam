@@ -13,26 +13,38 @@ function love.load()
   MAX_GRAVITY = 800
   JUMP_HEIGHT = 400
   NEW_LINE = string.char(10)
+  TILE_SIZE = 16
 
   SYSTEMS_IN_ORDER = {
+    require('systems.friction-system'),
+
     require('systems.audio-system'),
     require('systems.accident-system'),
     require('systems.collision-registration-system'),
     require('systems.keyboard-state-system'),
     require('systems.tile-map-system'),
-    require('systems.vehicle-input-system'),
+
     require('systems.truck-package-system'),
+    require('systems.path-following-system'),
+
+    require('systems.controllable-entity-system'),
+    require('systems.vehicle-input-system'),
     require('systems.vehicle-interaction-system'),
-    require('systems.character-interaction-system'),
     require('systems.character-input-system'),
-    require('systems.sprite-animating-system'),
+    require('systems.character-interaction-system'),
+
     require('systems.entity-movement-system'),
+    require('systems.rotation-system'),
+
+    require('systems.sprite-animating-system'),
+
     require('systems.trigger-resetting-system'),
     require('systems.collision-detection-system'),
+    require('systems.collision-update-system'),
+
     require('systems.delivery-detection-system'),
     require('systems.box-delivery-linking-system'),
     require('systems.repel-system'),
-    require('systems.friction-system'),
     require('systems.revolve-around-system'),
     require('systems.camera-system'),
     --drawing

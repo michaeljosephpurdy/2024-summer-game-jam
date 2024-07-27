@@ -2,9 +2,7 @@ local CollisionDetectionSystem = tiny.processingSystem()
 CollisionDetectionSystem.filter = tiny.requireAll('collision_detection_enabled', 'collision_radius', 'x', 'y')
 
 function CollisionDetectionSystem:initialize(props)
-  self.bump_world = props.bump_world
   self.collision_grid = props.collision_grid --[[@as CollisionGrid]]
-  self.entity_factory = props.entity_factory --[[@as EntityFactory]]
 end
 
 function CollisionDetectionSystem:process(e, dt)
@@ -12,10 +10,8 @@ function CollisionDetectionSystem:process(e, dt)
   e.nearest_box = nil
   e.nearest_back_door = nil
   e.nearest_delivery_stop = nil
-  local future_x = e.x + (e.dx * e.speed * dt)
-  local future_y = e.y + (e.dy * e.speed * dt)
   -- first, we'll check horizontal collisions
-  local horizontal_collisions = self.collision_grid:single_query(future_x, e.y)
+  local horizontal_collisions = self.collision_grid:single_query(e.future_x, e.y)
   local solid_on_horizontal = false
   for _, other in pairs(horizontal_collisions) do
     if other.is_tile and other.is_solid then
@@ -24,7 +20,7 @@ function CollisionDetectionSystem:process(e, dt)
     end
   end
   -- second, we'll check vertical collisions
-  local vertical_collisions = self.collision_grid:single_query(e.x, future_y)
+  local vertical_collisions = self.collision_grid:single_query(e.x, e.future_y)
   local solid_on_vertical = false
   for _, other in pairs(vertical_collisions) do
     if other.is_tile and other.is_solid then
@@ -33,11 +29,11 @@ function CollisionDetectionSystem:process(e, dt)
     end
   end
   -- third, we'll check all surrounding collisions
-  local collisions = self.collision_grid:query(future_x, future_y)
+  local collisions = self.collision_grid:query(e.future_x, e.future_y)
   for _, other in pairs(collisions) do
     local max_distance = e.collision_radius + other.collision_radius
-    local distance_squared = ((other.x - future_x) * (other.x - future_x))
-      + ((other.y - future_y) * (other.y - future_y))
+    local distance_squared = ((other.x - e.future_x) * (other.x - e.future_x))
+      + ((other.y - e.future_y) * (other.y - e.future_y))
     local overlaps = distance_squared <= max_distance * max_distance
 
     if overlaps then
@@ -87,14 +83,11 @@ function CollisionDetectionSystem:process(e, dt)
     end
   end
   if solid_on_horizontal then
-    future_x = e.x
+    e.future_x = e.x
   end
   if solid_on_vertical then
-    future_y = e.y
+    e.future_y = e.y
   end
-  -- if there are no collisions, update the entity
-  self.collision_grid:update(e, future_x, future_y)
-  e.x, e.y = future_x, future_y
 end
 
 return CollisionDetectionSystem
