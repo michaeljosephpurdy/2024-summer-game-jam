@@ -73,6 +73,7 @@ function SuperSimpleLdtk:load(level_id, on_image, on_tile, on_entity)
   for _, types in pairs(data.entities) do
     for _, entity in pairs(types) do
       entity.level_id = level_id
+      entity.level_x, entity.level_y = data.x, data.y
       local old_x, old_y = entity.x, entity.y
       entity.x = data.x + entity.x
       entity.y = data.y + entity.y

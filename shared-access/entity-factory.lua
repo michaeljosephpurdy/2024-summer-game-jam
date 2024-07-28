@@ -16,9 +16,30 @@ local EntityTypes = {
   CRUSHED_STOP_SIGN = 'CRUSHED_STOP_SIGN',
   DELIVERY_STOP = 'DELIVERY_STOP',
   INDICATOR = 'INDICATOR',
+  WALKING_NPC = 'WALKING_NPC',
   --TRASH_CAN = 'TRASH_CAN',
 }
 EntityFactory.types = EntityTypes
+
+local function random_npc_spritesheet()
+  local i = math.random(1, 2)
+  return {
+    normal_idle_sprites = {
+      love.graphics.newImage('assets/npc-' .. i .. '-idle.png'),
+    },
+    normal_walking_sprites = {
+      love.graphics.newImage('assets/npc-' .. i .. '-walking-1.png'),
+      love.graphics.newImage('assets/npc-' .. i .. '-walking-2.png'),
+      love.graphics.newImage('assets/npc-' .. i .. '-walking-3.png'),
+      love.graphics.newImage('assets/npc-' .. i .. '-walking-4.png'),
+      love.graphics.newImage('assets/npc-' .. i .. '-walking-5.png'),
+      love.graphics.newImage('assets/npc-' .. i .. '-walking-6.png'),
+      love.graphics.newImage('assets/npc-' .. i .. '-walking-7.png'),
+      love.graphics.newImage('assets/npc-' .. i .. '-walking-8.png'),
+    },
+    dead_sprite = love.graphics.newImage('assets/npc-' .. i .. '-dead.png'),
+  }
+end
 
 ---@private
 ---@type { [EntityTypes]: table }
@@ -100,7 +121,36 @@ EntityFactory.entities = {
     is_trigger = true,
     can_be_repelled = false,
   },
+  [EntityTypes.WALKING_NPC] = {
+    is_character = true,
+    x = 0,
+    y = 0,
+    dx = 0,
+    dy = 0,
+    sprite = love.graphics.newImage('assets/npc-1-idle.png'),
+    animation_sprite = { love.graphics.newImage('assets/npc-1-idle.png') },
+    animation_time = 1,
+    walking_sprites_time = 10,
+    animation_loop = true,
+    normal_idle_sprites = true, -- will be randomized
+    normal_walking_sprites = true, -- wil be randomized
+    origin_offset = 16,
+    rotation = 0,
+    friction = 0.09,
+    acceleration = 10,
+    speed = 0,
+    max_speed = 50,
+    rotation_speed = 3,
+    collision_radius = 8,
+    revolve_around = true,
+    pivot_offset = math.rad(-90),
+    can_be_repelled = true,
+    can_repel = true,
+    repel_force = 3,
+  },
   [EntityTypes.PLAYER] = {
+    is_controllable = true,
+    is_character = true,
     is_player = true,
     camera_follow = true,
     x = 50,
@@ -155,6 +205,7 @@ EntityFactory.entities = {
     repel_force = 3,
   },
   [EntityTypes.AMAZON_TRUCK] = {
+    is_controllable = true,
     is_vehicle = true,
     is_truck = true,
     is_active = false,
@@ -202,6 +253,17 @@ EntityFactory.entities = {
 ---@param e EntityTypes
 ---@return table
 function EntityFactory:build(e)
+  -- We're gonna do some weird overwriting of entity type here
+  -- this is because during jam there was singular Entity object
+  -- with inner entity type field
+  -- Post-jam version though has different Entity object, which is
+  -- helpful in LDtk because then fields (like 'path') can be on
+  -- some entities and not all
+  local type = e.id
+  if type == 'Entity' then
+    type = e.type
+  end
+  e.type = type
   local entity = self:build_single(e)
   entity.type = e.type
   if entity.is_player_spawn then
@@ -283,6 +345,11 @@ function EntityFactory:build_single(e)
   end
   new_entity.type = e.type
   new_entity.draw_debug = true
+  if e.type == EntityTypes.WALKING_NPC then
+    for k, v in pairs(random_npc_spritesheet()) do
+      new_entity[k] = v
+    end
+  end
   return new_entity
 end
 
