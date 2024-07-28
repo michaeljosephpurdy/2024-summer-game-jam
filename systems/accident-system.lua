@@ -40,6 +40,7 @@ function AccidentSystem:onAdd(e)
       sprite_offset = entity.sprite_offset,
       origin_offset = entity.origin_offset,
       rotation = entity.rotation,
+      draw_lower = true,
     })
     self.world:removeEntity(entity)
     self.world:addEntity({
