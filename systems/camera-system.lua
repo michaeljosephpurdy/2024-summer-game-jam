@@ -1,6 +1,5 @@
 local CameraSystem = tiny.processingSystem()
 CameraSystem.filter = tiny.requireAny('camera_follow', 'screen_shake', 'resize')
-CameraSystem.is_draw_system = true
 
 local function lerp(a, b, t)
   return a + (b - a) * t

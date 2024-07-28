@@ -15,10 +15,10 @@ function TileMapSystem:initialize(props)
       sprite_offset = { x = -8, y = -8 },
     }
     if image.layer == 'Background.png' then
-      image_data.draw_background = true
+      image_data.z_index = -100
     end
     if image.layer == 'Foreground.png' then
-      image_data.draw_foreground = true
+      image_data.z_index = 100
     end
     self.world:add(image_data)
   end

@@ -1,6 +1,5 @@
 local DebugOverlaySystem = tiny.processingSystem()
 DebugOverlaySystem.filter = tiny.requireAll('draw_debug', 'x', 'y')
-DebugOverlaySystem.is_draw_system = true
 
 function DebugOverlaySystem:initialize(props)
   self.keyboard_state = props.keyboard_state --[[@as KeyboardState]]

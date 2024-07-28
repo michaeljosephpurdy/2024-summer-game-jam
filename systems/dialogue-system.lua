@@ -1,6 +1,5 @@
 local DialogueSystem = tiny.processingSystem()
 DialogueSystem.filter = tiny.requireAll('is_dialogue')
-DialogueSystem.is_draw_system = true
 
 function DialogueSystem:initialize(props)
   self.keyboard_state = props.keyboard_state --[[@as KeyboardState]]

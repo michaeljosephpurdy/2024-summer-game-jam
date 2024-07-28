@@ -52,6 +52,7 @@ EntityFactory.entities = {
     sprite = love.graphics.newImage('assets/indicator.png'),
     draw_ui = true,
     rotation = 0,
+    z_index = 100,
   },
   [EntityTypes.STOP_SIGN] = {
     x = 0,
@@ -65,6 +66,7 @@ EntityFactory.entities = {
     can_repel = true,
     repel_force = 15,
     is_stop_sign = true,
+    z_index = 100,
   },
   [EntityTypes.VEHICLE_DOOR] = {
     rotation = 0,
@@ -75,6 +77,7 @@ EntityFactory.entities = {
     pivot_offset = math.rad(-90),
     origin_offset = 16,
     draw_debug = true,
+    z_index = 50,
   },
   [EntityTypes.TRUCK_BACK_DOOR] = {
     rotation = 0,
@@ -86,16 +89,19 @@ EntityFactory.entities = {
     origin_offset = 32,
     draw_debug = true,
     boxes = {},
+    z_index = 50,
   },
   [EntityTypes.CRUSHED_BOX] = {
     sprite = love.graphics.newImage('assets/box-crushed.png'),
     origin_offset = 8,
     lower_draw = true,
+    z_index = -2,
   },
   [EntityTypes.CRUSHED_STOP_SIGN] = {
     sprite = love.graphics.newImage('assets/stop-sign-crushed.png'),
     origin_offset = 16,
     lower_draw = true,
+    z_index = -2,
   },
   [EntityTypes.BOX] = {
     sprite = love.graphics.newImage('assets/box.png'),
@@ -110,6 +116,7 @@ EntityFactory.entities = {
     can_be_repelled = true,
     repel_offset = 2,
     on_ground = true,
+    z_index = -1,
   },
   [EntityTypes.BOX_TRIGGER] = {
     rotation = 0,
@@ -232,6 +239,7 @@ EntityFactory.entities = {
     upper_draw = true,
     repel_force = 30,
     can_repel = true,
+    z_index = 50,
   },
   [EntityTypes.DELIVERY_STOP] = {
     xx = 0,

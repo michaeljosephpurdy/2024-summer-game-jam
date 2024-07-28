@@ -49,11 +49,7 @@ function love.load()
     require('systems.revolve-around-system'),
     require('systems.camera-system'),
     --drawing
-    require('systems.background-sprite-drawing-system'),
-    require('systems.lower-sprite-drawing-system'),
-    require('systems.middle-sprite-drawing-system'),
-    require('systems.upper-sprite-drawing-system'),
-    require('systems.foreground-sprite-drawing-system'),
+    require('systems.sprite-drawing-system'),
     require('systems.text-display-system'),
     require('systems.game-state-system'),
     require('systems.dialogue-system'),

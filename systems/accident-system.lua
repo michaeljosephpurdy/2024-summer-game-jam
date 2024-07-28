@@ -40,7 +40,7 @@ function AccidentSystem:onAdd(e)
       sprite_offset = entity.sprite_offset,
       origin_offset = entity.origin_offset,
       rotation = entity.rotation,
-      draw_lower = true,
+      z_index = -1,
     })
     self.world:removeEntity(entity)
     self.world:addEntity({
@@ -58,6 +58,7 @@ function AccidentSystem:onAdd(e)
       y = entity.y,
       rotation = entity.rotation,
       type = 'CRUSHED_BOX',
+      z_index = -1,
     })
     self.world:addEntity(crushed_box)
     self.world:removeEntity(entity)
@@ -79,6 +80,7 @@ function AccidentSystem:onAdd(e)
       y = entity.y,
       rotation = entity.rotation,
       type = 'CRUSHED_STOP_SIGN',
+      z_index = -1,
     })
     self.world:addEntity(crushed)
     self.world:removeEntity(entity)

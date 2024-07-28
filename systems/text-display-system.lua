@@ -1,6 +1,5 @@
 local TextDisplaySystem = tiny.processingSystem()
 TextDisplaySystem.filter = tiny.requireAll('is_text', 'x', 'y')
-TextDisplaySystem.is_draw_system = true
 
 function TextDisplaySystem:initialize(props)
   self.font = love.graphics.newFont('assets/RobotoMono-Regular.ttf', 10, 'mono')
