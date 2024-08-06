@@ -76,9 +76,9 @@ function love.load()
   local joystick_state = require('shared-access.joystick')() --[[@as JoystickState]]
   local keyboard_state = require('shared-access.keyboard')() --[[@as KeyboardState]]
   local entity_factory = require('shared-access.entity-factory')() --[[@as EntityFactory]]
-  local collision_grid = require('shared-access.collision-grid')(16, 1000, 1000) --[[@as CollisionGrid]]
   local game_state = require('shared-access.game-state')() --[[@as GameState]]
   local camera_state = require('shared-access.camera-state')() --[[@as CameraState]]
+  local collision_grid = require('plugins.collision-grid').new(16, 1000, 1000)
 
   love.graphics.setLineStyle('rough')
   love.window.setMode(GAME_WIDTH * GAME_SCALE, GAME_HEIGHT * GAME_SCALE)
